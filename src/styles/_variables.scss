@@ -1,0 +1,18 @@
+@import 'colors';
+
+$wrapper: 1272px;
+$wrapperTablet: 728px;
+$wrapperMobile: 500px;
+
+$desktop: 1360px;
+$desktopSmall: 1024px;
+$tablet: 768px;
+$tabletSmall: 600px;
+$mobileLarge: 480px;
+$mobile: 390px;
+$mobileSmall: 360px;
+
+:export {
+  primary: $primary;
+  secondary: $brown;
+}

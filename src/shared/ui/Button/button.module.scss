@@ -1,0 +1,190 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.button {
+  // font-family: 'Raleway';
+  text-decoration: none;
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  transition: all 250ms;
+  box-sizing: border-box;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  color: $text_2;
+  line-height: 100%;
+  border-radius: 16px;
+  height: max-content;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  @media (max-width:$tablet) {
+    border-radius: 8px;
+  }
+}
+
+@mixin buttonStyles($prefix: '') {
+
+  // sizes
+  .#{$prefix}size {
+    &-large {
+      font-size: 18px;
+      line-height: 150%;
+      padding: 23px 46.5px;
+      min-height: 56px;
+      font-weight: 600;
+
+      @media (max-width: $tablet) {
+        font-size: 15px;
+        line-height: 150%;
+        padding: 12px 32px;
+      }
+    }
+
+    &-medium,
+    &-small {
+      font-size: 15px;
+      line-height: 150%;
+      padding: 12px 51px;
+    }
+
+    &-medium {
+      padding: 14px 30px;
+      @media (max-width: $tablet) {
+        font-size: 15px;
+        padding: 12px 40px;
+      }
+    }
+    &-small {
+      padding: 12px 24px;
+
+      @media (max-width: $tablet) {
+        padding: 8px 16px;
+
+      }
+    }
+  }
+
+  // border radius
+  .#{$prefix}radius {
+
+    // fullRounded radius for button-large
+    &-fullRounded {
+      &.#{$prefix}size-large {
+        // border-radius: 60px;
+
+        @media (max-width: $tablet) {
+          // border-radius: 48px;
+        }
+      }
+
+      // fullRounded radius for button-medium and button-small
+      &.#{$prefix}size-medium,
+      &.#{$prefix}size-small {
+        // border-radius: 56px;
+      }
+    }
+
+    &-small {
+      // border-radius: 8px;
+
+      @media (max-width: $tablet) {
+        // border-radius: 4px;
+      }
+    }
+  }
+
+  // variants
+  .#{$prefix}variant {
+    &-outlined {
+
+      // primary-outlined
+      &.#{$prefix}bg-primary {
+        border-color: $primary;
+
+        &:hover {
+          background: $primary;
+          color: white;
+        }
+
+        &:active {
+          background: darken($primary, 8%);
+          border-color: darken($primary, 8%);
+        }
+
+        &:disabled {
+          border-color: $primary;
+          background: none;
+        }
+      }
+
+      // secondary-outlined
+      &.#{$prefix}bg-secondary {
+        border-color: $white;
+        color: $white;
+
+        &:hover {
+          background: $white;
+          color: $black;
+        }
+
+        &:active {
+          background: darken($white, 8%);
+          border-color: darken($white, 8%);
+        }
+      }
+    }
+
+    &-contained {
+
+      // primary-contained
+      &.#{$prefix}bg-primary {
+        border-color: $primary;
+        background: $primary;
+        color: $white;
+
+        &:hover {
+          background: darken($primary, 5%);
+        }
+
+        &:active {
+          background: darken($primary, 9%);
+        }
+      }
+
+      // secondary-contained
+      &.#{$prefix}bg-secondary {
+        border-color: $primary;
+        background: $white;
+        color: $primary;
+
+        &:hover {
+          background: $primary;
+          color: $white;
+        }
+
+        &:active {
+          background: darken($primary, 9%);
+          border-color: darken($primary, 9%);
+        }
+      }
+    }
+  }
+
+  // fullWidth
+  .#{$prefix}fullWidth-true {
+    width: 100%;
+  }
+
+  .#{$prefix}fullWidth-false {
+    width: auto;
+  }
+}
+
+@include buttonStyles();
+

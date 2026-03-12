@@ -1,0 +1,54 @@
+@import '../../../../../styles/variables';
+@import '../../../../../styles/mixins';
+
+.Item {
+	padding: 12px 16px;
+	border-bottom: 1px solid $text_2;
+	cursor: pointer;
+	transition: all 150ms;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 24px;
+	color: $black;
+	display: flex;
+	align-items: center;
+
+	.label {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		width: 100%;
+	}
+
+	&:hover {
+		background: lighten($text_2, 10%);
+	}
+
+	&:last-of-type {
+		border: none;
+	}
+}
+
+.Checkbox {
+	background: lighten($primary, 30%);
+	width: 24px;
+	height: 24px;
+	display: block;
+	border-radius: 8px;
+	margin-right: 12px;
+	transition: all 250ms ease-in-out;
+	flex-grow: 0;
+
+	svg {
+		fill: $white;
+		opacity: 0;
+	}
+}
+
+.Active {
+	background: $primary;
+
+	svg {
+		opacity: 1;
+	}
+}

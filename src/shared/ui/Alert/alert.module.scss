@@ -1,0 +1,63 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+// colors
+$danger: #f87171;
+$attention: #facc15;
+$info: #60a5fa;
+$success: #4ade80;
+
+.alert {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.icon {
+  margin-right: 12px;
+  flex-shrink: 0;
+  transform: translateY(2px);
+}
+
+.text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 500;
+  color: darken($danger, 5%);
+}
+
+$opacity: 30%;
+
+.success {
+  background: lighten($success, $opacity);
+
+  .icon {
+    fill: $success;
+  }
+}
+
+.attention {
+  background: lighten($attention, $opacity);
+}
+
+.danger {
+  //background: lighten($danger, 22%);
+  border: 1px solid lighten($danger, 5%);
+
+  .icon {
+    fill: $danger;
+  }
+}
+
+.info {
+  background: lighten($info, $opacity);
+
+  .icon {
+    fill: $info;
+  }
+}

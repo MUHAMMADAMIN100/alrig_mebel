@@ -1,0 +1,704 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  grid-gap: 24px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+  margin: 60px 0;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    margin: 30px 0;
+    box-shadow: none;
+    padding: 00;
+  }
+}
+
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  line-height: 120%;
+  color: black;
+}
+
+.description {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stepsIndicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  background: #f3f4ff;
+  color: #3b3bff;
+  margin-bottom: 8px;
+}
+
+.block {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stepTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: black;
+  line-height: 120%;
+}
+
+.subTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 8px;
+  margin-bottom: 6px;
+  line-height: 120%;
+  color: black;
+
+  @media (max-width: $tablet) {
+    font-size: 18px;
+  }
+}
+
+.helperText {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.helperTextSmall {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin: 4px 0 0;
+}
+
+.dropdown {
+  width: 100%;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.navButtons {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summary {
+  margin-top: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f9fafb;
+  border: 1px solid rgba(0,0,0,0.05);
+
+  h4 {
+    margin: 0;
+  }
+}
+
+.summaryList {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  font-size: 0.9rem;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 2px dashed rgba(0,0,0,0.05);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 1.05rem;
+  text-align: left;
+  font-weight: bold;
+  margin-top: 8px;
+
+  > div {
+    font-size: 1.2rem;
+  }
+}
+
+/* ПРАВАЯ КОЛОНКА — КОРЗИНА / ИТОГ */
+.formBlock {
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px 16px;
+  box-sizing: border-box;
+  background: #fafafa;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 0 15px rgba(0,0,0,0.04);
+
+  @media (max-width: $tablet) {
+    position: static;
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+.sidebarTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 120%;
+  color: black;
+}
+
+.sidebarEmpty {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.cartItem {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cartItemHeader {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  align-items: start;
+  flex-direction: column;
+
+  @media (max-width: 600px) {
+    // flex-direction: row;
+    // justify-content: space-between;
+    // align-items: center;
+  }
+}
+.text_card {
+  line-height: 120%;
+  margin: 4px 0;
+}
+
+.cartItemName {
+  font-weight: 600;;
+  line-height: 120%;
+  font-size: 18px;
+}
+
+.cartItemHeader span:first-child {
+  color: #111827;
+}
+
+.cartItemHeader span:last-child {
+  font-weight: 700;
+  color: #16a34a;
+}
+
+.cartItemDetails {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  font-size: 0.85rem;
+  color: #4b5563;
+
+  li {
+    padding: 2px 0;
+  }
+}
+
+/* ИТОГИ: товары / услуги / общая сумма */
+.sidebarTotal {
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.sidebarRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebarRowLabel {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.sidebarRowValue {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* строка с услугами Barg */
+.sidebarRowService {
+  line-height: 120%;
+  // padding: 6px 8px;
+  // border-radius: 8px;
+  // background: rgba(59, 130, 246, 0.04);
+  // border: 1px dashed rgba(59, 130, 246, 0.25);
+  align-items: center;
+}
+
+.sidebarRowService .sidebarRowLabel {
+  color: #1d4ed8;
+  opacity: 0.9;
+}
+
+.sidebarRowService .sidebarRowValue {
+  color: #1d4ed8;
+}
+
+/* общая сумма — акцент */
+.sidebarRowGrand {
+  margin-top: 4px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  color: #f9fafb;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.25);
+}
+
+.sidebarRowGrand .sidebarRowLabel {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.sidebarRowGrand .sidebarRowValue {
+  font-size: 1.25rem;
+}
+
+/* подпись под итогами */
+.sidebarNote {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 4px;
+  line-height: 120%;
+}
+
+/* блок, когда заказ уже оформлен справа */
+.sidebarSuccess {
+  font-size: 0.9rem;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #ecfdf3;
+  border: 1px solid #bbf7d0;
+  margin-bottom: 4px;
+}
+
+/* Блок успеха слева */
+.successBlock {
+  margin-top: 12px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.orderId {
+  font-weight: 700;
+}
+/* блок с карточками упаковки */
+.packagingCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.packagingCard {
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 8px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+  /* reset кнопки */
+  outline: none;
+  border-width: 2px;
+  font: inherit;
+  color: inherit;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.packagingCard_active {
+  border-color: $primary; // красный акцент
+  box-shadow: 0 10px 26px rgba(239, 68, 68, 0.25);
+}
+
+.packagingImageWrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #f3f4f6;
+
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transform: scale(1.03);
+    transition: transform 0.25s ease;
+  }
+
+  .packagingCard:hover & img {
+    transform: scale(1.06);
+  }
+}
+
+.packagingStub {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  background: linear-gradient(135deg, #ef4444, #f97316);
+  color: #fff;
+
+  span {
+    font-weight: 600;
+  }
+
+  small {
+    font-size: 0.8rem;
+    opacity: 0.9;
+  }
+}
+
+.packagingInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.packagingName {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.packagingBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.packagingPrice {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.packagingChoose {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid $primary;
+  color: $primary;
+  background: rgba(239, 68, 68, 0.04);
+  white-space: nowrap;
+}
+
+.packagingCard_active .packagingChoose {
+  background: $primary;
+  color: #fff;
+  border-color: $primary;
+}
+
+@media (max-width: $tablet) {
+  .packagingCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.optionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.optionCard {
+  border-radius: 16px;
+  border: 2px solid transparent;
+  background: #ffffff;
+  padding: 8px 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  text-align: left;
+  // min-height: 260px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+  // height: 100%;        // 🔹 тянем карточку на всю высоту слайда
+
+  // reset button
+  outline: none;
+  font: inherit;
+  color: inherit;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  }
+}
+
+
+
+.optionCard_active {
+  border-color: $primary;
+  box-shadow: 0 10px 26px rgba(239, 68, 68, 0.25);
+}
+
+.optionImage {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #f3f4f6;
+
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transform: scale(1.03);
+    transition: transform 0.25s ease;
+  }
+
+  .optionCard:hover & img {
+    transform: scale(1.06);
+  }
+}
+
+.optionStub {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  background: linear-gradient(135deg, $primary, #f97316);
+  color: #fff;
+
+  span {
+    font-weight: 600;
+  }
+
+  small {
+    font-size: 0.8rem;
+    opacity: 0.9;
+  }
+}
+.optionInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;             // 🔹 текстовый блок занимает всё свободное
+}
+.optionName {
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 120%;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;   // 🔥 максимум 2 строки
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (max-width: $tablet) {
+    font-weight: 400;
+  }
+}
+
+
+.optionBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 16px;    // 🔹 прижимает цену+кнопку к низу карточки
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+  }
+}
+.sweetsOptionBottom {
+  flex-direction: column;
+  align-items: start;
+  .optionAction {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+.optionPrice {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-top: 8px;
+
+  @media (max-width: $tablet) {
+    width: 100%;
+    font-weight: 500;
+  }
+}
+
+.optionAction {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid $primary;
+  color: $primary;
+  background: rgba(239, 68, 68, 0.04);
+  white-space: nowrap;
+  box-sizing: border-box;
+
+   @media (max-width: $tablet) {
+    width: 100%;
+    text-align: center;
+    border-radius: 8px;
+  }
+}
+
+.optionCard_active .optionAction {
+  background: $primary;
+  color: #fff;
+  border-color: $primary;
+}
+
+@media (max-width: $tablet) {
+  .optionGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.pricess {
+  min-width: 80px;
+}
+.sweetsSlider {
+  width: 100%;
+  padding-top: 8px;
+
+  .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  .swiper-slide {
+    height: auto;       // 🔥 ключ: слайд по высоте контента, а не по контейнеру
+  }
+  @media (max-width: $tablet) {
+    max-width: 360px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 420px) {
+    max-width: 330px;
+  }
+}
+
+.sweetsSlide {
+  min-height: 250px;
+  box-sizing: border-box;
+  /* width: 220px;  ❌ больше не нужно */
+  display: flex;        // чтобы .optionCard могла занять всю высоту
+  /* height: 100%;  ❌ убираем, иначе снова будет дёргать */
+
+  @media (max-width: $tablet) {
+    min-height: 221px;
+  }
+}
+
+.sweetsSlide > .optionCard {
+  // width: 100%;
+}
+
+.sweetsSliderMain {
+  padding: 20px 10px;
+  box-sizing: border-box;
+
+  @media (max-width: $tablet) {
+    padding: 0;
+  }
+}
+
+.sweetsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}

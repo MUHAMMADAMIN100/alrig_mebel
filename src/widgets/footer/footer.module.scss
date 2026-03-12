@@ -1,0 +1,156 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.wrapper {
+    background-color: white;
+    // background: rgb(243,237,227);
+    // background: linear-gradient(180deg, rgba(243,237,227,1) 0%, rgba(236,224,206,1) 100%);
+}
+.footer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 28px;
+    padding-bottom: 20px;
+}
+.footer_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-items: center;
+    grid-gap: 20px;
+    border-bottom: 1px solid #e0dfdd;
+    padding-bottom: 28px;
+    margin-bottom: 20px;
+
+    @media (max-width: $tablet) {
+        align-items: start;
+    }
+}
+.bl_logo {
+    display: flex;
+    flex-direction: column;
+    
+    @media (max-width: $tablet) {
+        grid-gap: 10px;
+        align-items: start;
+    }
+}
+
+.logo { 
+    @media (max-width: $tablet) {
+        width: 90px;
+        height: 44px;
+    }
+}
+.nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav_title {
+    margin: 0;
+    font-size: 20px;
+    line-height: 120%;
+    font-weight: 500;
+    color: $text_2;
+    margin-bottom: 16px;
+
+    @media (max-width: $tablet) {
+        font-size: 16px;
+    }
+}
+.nav_items {
+    display: flex;
+    grid-gap: 40px;
+
+    @media (max-width: $tablet) {
+        flex-direction: column;
+        grid-gap: 5px;
+        text-align: end;
+    }
+}
+.nav_link {
+    text-decoration: none;
+    color: $black;
+    font-size: 14px;
+    line-height: 120%;
+    transition: all .2s;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 10px 16px;
+
+    &:hover {
+        outline: 1px solid $primary;
+        background-color: rgba(116, 8, 8, 0.1);
+        color: $primary;
+    }
+
+    @media (max-width: $tablet) {
+        // font-size: 12px;
+        padding: 5px 10px;
+    }
+
+
+}
+.link {
+    cursor: pointer;
+}
+.bottom_text {
+    margin: 0;
+    font-size: 14px;
+    line-height: 120%;
+    color: $black;
+    text-decoration: none;
+
+    @media (max-width: $tablet) {
+        font-size: 12px;
+    }
+}
+.bottom_link {
+    color: $black;
+    text-decoration: none;
+
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+    grid-gap: 20px;
+
+    @media (max-width: $tablet) {
+        display: none;
+    }
+}
+.socials_mobile {
+    display: flex;
+    grid-gap: 8px;
+
+    @media (min-width: $tablet) {
+        display: none;
+        grid-gap: 16px;
+    }
+}
+.icon {
+    width: 30px;
+    height: 30px;
+    transition: all .2s;
+    fill: $primary;
+
+    &:hover {
+        scale: 1.1;
+    }
+}
+.webrand_icon {
+    margin-bottom: -2.75px;
+    width: 80px;
+    height: auto;
+    margin-left: 5px;
+}
+.footer_bottom {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.bottom_link {
+    text-decoration: none;
+}

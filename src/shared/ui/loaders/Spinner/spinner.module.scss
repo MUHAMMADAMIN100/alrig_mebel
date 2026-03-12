@@ -1,0 +1,7 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.spinner {
+  font-size: 11px;
+  flex-shrink: 0;
+}

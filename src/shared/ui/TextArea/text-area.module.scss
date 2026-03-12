@@ -1,0 +1,63 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.group {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.main {
+  position: relative;
+}
+
+.label {
+  font-size: 15px;
+  line-height: 24px;
+  // color: $gray1;
+  position: absolute;
+  left: 17px;
+  top: 24px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: all 250ms;
+}
+
+.labelFocus {
+  top: 4px;
+  transform: translateY(0);
+}
+
+.textArea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 1px solid $gray;
+  padding: 6px 16px;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 24px;
+  resize: none;
+  height: 150px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.inputFocus {
+  padding: 24px 16px 4px;
+}
+
+.errorMessage {
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: .4px;
+  color: #af2121;
+  display: block;
+  margin-top: 4px;
+  text-align: left;
+  margin-left: 3px;
+}

@@ -1,0 +1,57 @@
+@import '../../../.../../../styles/variables';
+@import '../../../.../../../styles/mixins';
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 16px;
+
+    @media (max-width: $tablet) {
+        grid-template-columns: 1fr;
+    }
+}
+.item {
+    display: flex;
+    grid-gap: 8px;
+    text-decoration: none;
+    align-items: center;
+    font-style: normal;
+    font-family: 'Arsenal';
+    padding: 16px 18px;
+    background-color: $brown;
+    width: 100%;
+    border-radius: 8px;
+    box-sizing: border-box;
+
+    &:hover {
+        color: lighten($brown, 15%);
+    }
+}
+
+.icon {
+    min-width: 24px;
+    min-height: 24px;
+    width: 100%;
+    height: 100%;
+    max-width: 24px;
+    max-height: 24px;
+    stroke: $primary;
+    fill: $primary;
+}
+.item_text {
+    // font-family: 'Raleway';
+    font-size: 18px;
+    color: $text_2;
+    font-weight: 500;
+    line-height: 117%;
+    margin: 0;
+}
+
+
+.item_address {
+    align-items: flex-start;
+}
+.phone {
+    font-family: 'Arsenal';
+    min-width: max-content;
+}

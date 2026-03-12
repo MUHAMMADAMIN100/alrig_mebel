@@ -1,0 +1,157 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.product {
+  width: 100%;
+  margin-top: 40px;
+  padding-bottom: 35px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  width: 100%;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr 1fr;
+  } 
+}
+
+.card {
+//   grid-column: span 3;
+  border-radius: 18px;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid gray;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  @media (max-width: $tablet) {
+    border-radius: 4px;
+    border: 0.5px solid gray;
+    // grid-column: span 4;
+  } 
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.01);
+  transition: transform .35s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.06);
+}
+
+.badges {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  z-index: 2;
+}
+
+.badge {
+  font-size: 12px;
+  line-height: 1;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  white-space: nowrap;
+}
+
+.body {
+  padding: 14px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  margin: 0;
+  line-height: 120%;
+//   margin-bottom: 4px;
+}
+
+.text {
+  font-size: 13px;
+  opacity: 0.75;
+  margin: 0;
+  line-height: 120%;
+}
+
+.item_bottom {
+  display: flex;
+//   align-items: flex-end;
+//   justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.price {
+  display: flex;
+  align-items: end;
+//   align-items: baseline;
+  gap: 6px;
+}
+
+.priceLabel {
+  font-size: 12px;
+//   opacity: 0.7;
+}
+
+.priceValue {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.priceCurrency {
+  font-size: 14px;
+//   opacity: 0.75;
+}
+
+.more {
+  font-size: 13px;
+  opacity: 0.85;
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+.card:hover .more {
+  opacity: 1;
+  transform: translateX(2px);
+}

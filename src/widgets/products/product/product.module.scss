@@ -1,0 +1,503 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+/* =========================
+   DESIGN SYSTEM (strict)
+========================= */
+$pageMax: 1200px;
+
+:root {
+  /* if you have global vars — можно перенести туда */
+}
+
+.page {
+  /* Чёткие границы макета + воздух */
+  // padding: 18px 0 44px;
+  margin-top: 40px;
+}
+
+.product {
+  margin-top: 22px;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 18px;
+  align-items: start;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tokens */
+$radius-xl: 18px;
+$radius-lg: 14px;
+$radius-md: 12px;
+
+$border-weak: rgba(255, 255, 255, 0.10);
+$border-mid: rgba(255, 255, 255, 0.16);
+$border-strong: rgba(255, 255, 255, 0.24);
+
+$bg-0: rgba(255, 255, 255, 0.02);
+$bg-1: rgba(255, 255, 255, 0.04);
+
+$shadow-1: 0 10px 26px rgba(0, 0, 0, 0.28);
+$shadow-2: 0 18px 42px rgba(0, 0, 0, 0.35);
+
+$ease: cubic-bezier(.2, .8, .2, 1);
+
+/* Shared card look */
+%card {
+  border: 1px solid $border-mid;
+  background: linear-gradient(180deg, $bg-1 0%, $bg-0 100%);
+  border-radius: $radius-xl;
+  box-shadow: $shadow-1;
+  overflow: hidden;
+  position: relative;
+
+  /* “Cut corner” tech detail */
+  &::before {
+    content: "";
+    position: absolute;
+    right: -22px;
+    top: -22px;
+    width: 60px;
+    height: 60px;
+    transform: rotate(45deg);
+    border: 1px solid $border-weak;
+    background: rgba(255,255,255,0.02);
+    pointer-events: none;
+  }
+
+  /* crisp hover */
+  transition: transform .22s $ease, border-color .22s $ease, box-shadow .22s $ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: $border-strong;
+    box-shadow: $shadow-2;
+  }
+}
+
+/* =========================
+   LEFT: MEDIA
+========================= */
+.media {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mainMedia {
+  @extend %card;
+
+  /* убрать “мутность” — контур и фон теперь чёткие */
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+}
+
+.mainImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center;
+
+  /* подчёркиваем контраст по краю */
+  filter: contrast(1.02) saturate(1.02);
+}
+
+.badges {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  z-index: 2;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 8px 10px;
+  border-radius: 999px;
+
+  /* строгий бейдж — меньше blur */
+  background: rgba(209, 196, 196, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  /* легкая “полоска” снизу для тех-стиля */
+  box-shadow: 0 10px 16px rgba(0,0,0,0.22);
+  white-space: nowrap;
+}
+
+/* Thumbs — как “плитки” */
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-bottom: 24px;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @media (max-width: $mobile) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.thumb {
+  border-radius: $radius-lg;
+  border: 1px solid $border-mid;
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+
+  /* чёткий интерактив */
+  transition: transform .18s $ease, border-color .18s $ease, box-shadow .18s $ease;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    display: block;
+    transform: scale(1.01);
+    transition: transform .22s $ease, filter .22s $ease;
+    filter: contrast(1.02);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: $border-strong;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.25);
+
+    img {
+      transform: scale(1.05);
+      filter: contrast(1.05) saturate(1.03);
+    }
+  }
+
+  &:active {
+    transform: translateY(0px);
+  }
+}
+
+.thumb_active {
+  border-color: rgba(255, 255, 255, 0.40);
+  box-shadow: 0 12px 22px rgba(0,0,0,0.28);
+
+  img {
+    transform: scale(1.06);
+  }
+}
+
+/* Video */
+.video {
+  @extend %card;
+}
+
+.videoHead {
+  padding: 12px 14px;
+  border-bottom: 1px solid $border-weak;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.videoTitle {
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+  opacity: 0.92;
+  text-transform: uppercase;
+}
+
+.videoFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+/* =========================
+   RIGHT: INFO
+========================= */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 2px 2px 0;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -0.6px;
+  line-height: 1.05;
+  margin: 0;
+  margin-top: 8px;
+
+  @media (max-width: $mobile) {
+    font-size: 24px;
+  }
+}
+
+.subtitle {
+  font-size: 14px;
+  opacity: 0.78;
+  letter-spacing: 0.2px;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+/* Buy Box — строго, как чек в премиум-магазине */
+.buyBox {
+  border-radius: $radius-xl;
+  border: 1px solid $border-strong;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+  box-shadow: $shadow-1;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    top: 52px;
+    height: 1px;
+    background: rgba(255,255,255,0.10);
+    pointer-events: none;
+  }
+}
+
+.priceRow {
+  display: flex;
+  padding-top: 8px;
+  justify-content: space-between;
+  // grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.priceLabel {
+  font-size: 16px;
+  // opacity: 0.72;
+  text-transform: uppercase;
+  letter-spacing: 0.35px;
+  font-weight: 500;
+}
+
+.priceValue {
+  font-size: 24px;
+  font-weight: 950;
+  letter-spacing: -0.4px;
+  text-align: left;
+  margin-right: 7px;
+}
+
+.priceCurrency {
+  font-size: 11px;
+  // opacity: 0.78;
+  text-transform: uppercase;
+  letter-spacing: 0.35px;
+}
+
+.installment {
+  margin-top: 8px;
+  font-size: 13px;
+  opacity: 0.92;
+
+  strong {
+    font-weight: 900;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.phone {
+  font-size: 13px;
+  opacity: 0.9;
+  text-decoration: none;
+
+  border: 1px solid $border-mid;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: $radius-md;
+  padding: 10px 12px;
+
+  transition: transform .18s $ease, border-color .18s $ease, background .18s $ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: $border-strong;
+    background: rgba(255,255,255,0.04);
+  }
+
+  &:active {
+    transform: translateY(0px);
+  }
+}
+
+/* Content blocks */
+.block {
+  border-radius: $radius-xl;
+  border: 1px solid $border-mid;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+  box-shadow: $shadow-1;
+  padding: 14px;
+}
+
+.blockTitle {
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 10px;
+  opacity: 0.92;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.92;
+  white-space: pre-line;
+}
+
+/* Specs — “табличный” строгий стиль */
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  // padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+
+  &:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.specLabel {
+  font-size: 13px;
+  opacity: 0.74;
+}
+
+.specValue {
+  font-size: 13px;
+  font-weight: 800;
+  text-align: right;
+  letter-spacing: 0.1px;
+}
+
+/* Bottom CTA */
+.bottomCta {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bottomHint {
+  font-size: 12px;
+  opacity: 0.75;
+  line-height: 1.4;
+}
+
+/* =========================
+   MODAL (optional polish)
+   Если у тебя есть эти классы — будет топ.
+========================= */
+.orderModalMain {
+  /* если Modal поддерживает */
+}
+
+.orderModalContent {
+  border-radius: 22px;
+  border: 1px solid $border-strong;
+  background: linear-gradient(180deg, rgba(20,20,22,0.92) 0%, rgba(12,12,14,0.92) 100%);
+  box-shadow: 0 28px 70px rgba(0,0,0,0.55);
+}
+
+.orderModal {
+  // padding: 16px;
+}
+
+.orderTitle {
+  font-size: 24px;
+  font-weight: 950;
+  letter-spacing: -0.2px;
+}
+
+.orderText {
+  margin-top: 8px;
+  font-size: 13px;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.formGrid {
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.orderActions {
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.orderHint {
+  font-size: 12px;
+  opacity: 0.75;
+  line-height: 1.4;
+  text-align: center;
+}
+.videoFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  z-index: 1;
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    z-index: 2;
+    pointer-events: auto;
+  }
+}

@@ -1,0 +1,171 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 24px;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    // grid-gap: 24px;
+  }
+}
+
+
+.item {
+  display: flex;
+  align-items: center;
+  grid-gap: 8px;
+  white-space: nowrap; /* Prevents the text inside the flex container from breaking */
+
+  p {
+    margin: 0;
+  }
+}
+
+.m_item {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  grid-gap: 8px;
+  // background-color: white;
+  // border-radius: 8px;
+  // padding: 16px;
+  width: 100%;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  white-space: nowrap; /* Prevents the text inside the flex container from breaking */
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (max-width: $tablet) {
+    border-radius: 8px;
+  }
+}
+.price {
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  font-family: 'Arsenal';
+}
+.m_table {
+  display: none;
+  @media (max-width: $tablet) {
+    display: block;
+  }
+}
+.bl_button {
+  display: flex;
+  justify-content: end;
+}
+
+.m_title {
+  color: black;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 16px;
+  text-wrap: wrap;
+  font-size: 24px;
+
+  @media (max-width: $tablet) {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+}
+
+
+.body {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+
+    &::after {
+        content: '';
+        display: block;
+        padding-bottom: 70%;
+    }
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        // border-radius: 12px 12px 0 0;
+        overflow: hidden;
+
+        @media (max-width: $tablet) {
+          // border-radius: 8px 8px 0 0;
+        }
+    }
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  // position: absolute;
+  // z-index: 10;
+  padding: 16px;
+  // top: 0;
+  // left: 0;
+  box-sizing: border-box;
+}
+.text_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  border-radius: 12px;
+  grid-gap: 12px;
+  box-sizing: border-box;
+
+  @media (max-width: $tablet) {
+    grid-gap: 0px;
+  }
+}
+.m_text {
+  font-size: 14px;
+  line-height: 20px;
+  // color: $black;
+  text-wrap: wrap;
+  margin: 0;
+  padding: 0;
+
+  @media (max-width: $tablet) {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.button_body {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+/* лёгкая оптимизация рендера */
+.items {
+  will-change: transform, opacity;
+}
+
+/* нежный ховер (только там, где он есть) */
+@media (hover: hover) {
+  .m_item {
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .m_item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  }
+}
+
+/* уважение системных настроек пользователя */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

@@ -1,0 +1,108 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.Tabs {
+	width: 100%;
+}
+
+
+.List {
+	padding: 4px;
+	list-style: none;
+	margin: 0;
+	display: flex;
+	justify-content: flex-start;
+	width: 100%;
+	overflow: auto;
+	margin: 0 !important;
+	border-radius: 12px;
+	grid-gap: 20px;
+
+	&::-webkit-scrollbar {
+		opacity: 0;
+		display: none;
+	}
+
+	@media (min-width: $tablet) {
+		width: max-content;
+	}
+
+}
+
+.body_tabs {
+	display: flex;
+	justify-content: space-between;
+	grid-gap: 15px;
+	margin-bottom: 20px;
+	flex-direction: column;
+	align-items: center;
+
+	@media (min-width: $tablet) {
+		align-items: center;
+		margin-bottom: 32px;
+	}
+
+	@media (min-width: $desktop) {
+		flex-direction: row;
+		align-items: center;
+		margin-bottom: 48px;
+	}
+
+	@media (min-width: $desktopSmall) {
+		margin-bottom: 48px;
+	}
+}
+
+.Item {
+	&:last-of-type {
+		margin-right: 0;
+	}
+}
+
+.Button {
+	background: none;
+	border: none;
+	color: $brown;
+	padding: 14px 18px;
+	box-sizing: border-box;
+	white-space: nowrap;
+	cursor: pointer;
+	display: block;
+	position: relative;
+	transition-property: color;
+	transition-duration: 250ms;
+	font-family: inherit;
+	font-weight: 500;
+	font-size: 11px;
+	line-height: 16px;
+	background-color: $white;
+	-webkit-tap-highlight-color: transparent;
+	border-radius: 50px;
+
+	@media (min-width: $tablet) {
+		font-size: 15px;
+		line-height: 117%;
+		padding: 10px 16px;
+	}
+
+	&.Active {
+		// color: $black;
+		// font-weight: 600;
+	}
+
+	span {
+		position: relative;
+		z-index: 2;
+	}
+	
+}
+.Tracker {
+	background: $primary;
+	border-radius: 50px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 1px solid $brown;
+}

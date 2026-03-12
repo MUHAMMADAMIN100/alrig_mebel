@@ -1,0 +1,125 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+$burgerColor: $black;
+
+.burger {
+  $size: 21px;
+  width: $size;
+  height: $size;
+  // border: 2px solid $burgerColor;
+  // border-radius: 50%;
+  border: none;
+  display: none;
+  background: none;
+  position: relative;
+  cursor: pointer;
+
+  @media (max-width: $desktopSmall) {
+    display: block;
+  }
+
+  @media (max-width: $mobileLarge) {
+    border-width: 1px;
+  }
+
+  &:hover {
+    @media (min-width: $desktopSmall + 1px) {
+      border-color: lighten($primary, 5%);
+
+      span {
+        background: lighten($primary, 5%);
+
+        &::after,
+        &::before {
+          background: lighten($primary, 5%);
+        }
+      }
+    }
+  }
+
+  span {
+    display: block;
+    width: 21px;
+    height: 2px;
+    background: $burgerColor;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: background 250ms;
+
+    @media (max-width: $mobileLarge) {
+      // width: 16px;
+      height: 2.4px;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      width: 21px;
+      height: 2.4px;
+      background: $burgerColor;
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: all 250ms;
+
+      @media (max-width: $mobileLarge) {
+        // width: 16px;
+        height: 2.4px;
+        top: -7px;
+      }
+    }
+
+    &::after {
+      top: 6px;
+
+      @media (max-width: $mobileLarge) {
+        top: 7px;
+      }
+    }
+  }
+}
+
+.open {
+  $burgerColor: $text_2 !important;
+  border-color: $burgerColor;
+  //position: absolute;
+  // z-index: 12;
+
+  span {
+    visibility: hidden;
+    background: $burgerColor;
+
+    &::before,
+    &::after {
+      visibility: visible;
+      background: $burgerColor;
+    }
+
+    &::after {
+      transform: translateX(-50%) rotate(45deg);
+      top: 0;
+    }
+
+    &::before {
+      transform: translateX(-50%) rotate(-45deg);
+      top: 0;
+    }
+  }
+}
+
+.mainPage {
+  $burgerColor: $burgerColor;
+  border-color: $burgerColor;
+
+  span {
+    background: $burgerColor;
+
+    &::before,
+    &::after {
+      background: $burgerColor;
+    }
+  }
+}

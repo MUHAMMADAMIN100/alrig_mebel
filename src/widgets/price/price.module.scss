@@ -1,0 +1,208 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+/* ------------------ ОБЩИЙ ФОН ------------------ */
+
+.wrapper {
+  background: #6B1B1F; /* фирменный фон */
+  padding: 50px 0 70px;
+  position: relative;
+  overflow: hidden;
+
+  /* Декоративные засветы */
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.35;
+    background-repeat: no-repeat;
+  }
+
+  &::before {
+    top: -60px;
+    left: -40px;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(255, 230, 180, 0.45), transparent 70%);
+  }
+
+  &::after {
+    bottom: -80px;
+    right: -60px;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(255, 180, 180, 0.35), transparent 70%);
+  }
+}
+
+/* ------------------ СЕРТИФИКАТ ------------------ */
+
+.about {
+  display: flex;
+  justify-content: center;
+}
+
+.certificate {
+  max-width: 640px;
+  width: 100%;
+  padding: 32px 32px 24px;
+  background: #FBF7EC; /* тёплый кремовый для эффекта сертификата */
+  border-radius: 18px;
+  border: 2px solid rgba(255, 215, 160, 0.7);
+  box-shadow:
+    0 22px 50px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.25);
+  position: relative;
+
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   inset: 12px;
+  //   border-radius: 14px;
+  //   border: 1px dashed rgba(180, 140, 80, 0.45);
+  // }
+}
+
+/* ------------------ РИББОН ------------------ */
+
+.ribbon {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  padding: 5px 14px;
+  background: linear-gradient(135deg, #a10d0d, #d8560c);
+  color: #fff7e8;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 6px 14px rgba(210, 80, 20, 0.4);
+}
+
+/* ------------------ КОНТЕНТ СЕРТИФИКАТА ------------------ */
+
+.inner {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #9b8b74;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 1.9rem;
+  color: #271f14;
+  font-weight: 700;
+  margin: 4px 0 6px;
+  line-height: 120%;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #5b4f3e;
+  max-width: 420px;
+  margin: 0 auto 12px;
+}
+
+/* ------------------ ЦЕНА ------------------ */
+
+.priceBlock {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 230, 150, 0.8);
+  padding: 8px 18px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(180, 130, 20, 0.4);
+}
+
+.priceLabel {
+  font-size: 0.95rem;
+  color: #8a4b0a;
+}
+
+.priceValue {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #b45309;
+}
+
+.priceCurrency {
+  font-size: 0.95rem;
+  color: #8a4b0a;
+  font-weight: 600;
+}
+
+.note {
+  font-size: 0.9rem;
+  color: #7c6a57;
+  margin-top: 6px;
+}
+
+/* ------------------ КНОПКА ------------------ */
+
+.button_body {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+
+  :global(button) {
+    border-radius: 999px;
+    padding-inline: 26px;
+    font-weight: 600;
+    background: #A71E22 !important;
+    box-shadow: 0 10px 25px rgba(120, 0, 0, 0.35);
+  }
+}
+
+/* ------------------ ФУТЕР СЕРТИФИКАТА ------------------ */
+
+.footerDecor {
+  margin-top: 16px;
+  padding-top: 12px;
+  font-size: 0.8rem;
+  color: #8b7b68;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  line-height: 120%;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(160, 140, 110, 0.7),
+      transparent
+    );
+  }
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.separator {
+  opacity: 0.6;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+.link_button {
+  text-decoration: none;
+}
+

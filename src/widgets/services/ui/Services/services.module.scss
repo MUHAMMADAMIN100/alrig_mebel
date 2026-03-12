@@ -1,0 +1,21 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.wrapper {
+    margin-bottom: 140px;
+    @media (max-height: $tablet) {
+        margin-bottom: 48px;
+    }
+}
+.title {
+    margin-bottom: 40px;
+    @media (max-height: $tablet) {
+        margin-bottom: 28px;
+    }
+}
+.items {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 24px;
+}
+

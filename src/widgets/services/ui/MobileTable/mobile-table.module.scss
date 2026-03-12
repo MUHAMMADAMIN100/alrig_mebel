@@ -1,0 +1,70 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+
+
+.items {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px;
+    background-color: $white;
+    padding: 20px 16px;
+    border-radius: 10px;
+}
+
+.item {
+    display: flex;
+    grid-gap: 16px;
+    align-items: center;
+    border-bottom: 1px solid $gray;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 12px;
+    flex: 0 1 100%;
+}
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 48px;
+    min-height: 48px;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.title {
+    font-size: 16px;
+    color: $text_2;
+    line-height: 100%;
+}
+.item_medium {
+    display: flex;
+    align-items: center;
+    grid-gap: 10px;
+}
+
+.item_icon {
+    display: flex;
+    align-items: center;
+    grid-gap: 4px;
+    font-size: 10px;
+    color: $text_2;
+    line-height: 100%;
+}
+
+.price {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 100%;
+    font-family: 'Arsenal';
+}

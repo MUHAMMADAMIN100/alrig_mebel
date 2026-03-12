@@ -1,0 +1,66 @@
+@import 'mixins';
+@import 'variables';
+
+html {
+  min-height: 100%;
+  //width: 100vw;
+  //overflow: overlay;
+  //overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* width */
+//::-webkit-scrollbar {
+//  width: 6px;
+//  opacity: 0;
+//  background-color: transparent;
+//}
+//
+///* Track */
+//::-webkit-scrollbar-track {
+//  background: rgba(0, 0, 0, .3)
+//}
+//
+///* Handle */
+//::-webkit-scrollbar-thumb {
+//  background: lighten($black2, 15%);
+//  border-radius: 3px;
+//}
+//
+///* Handle on hover */
+//::-webkit-scrollbar-thumb:hover {
+//  background: #555;
+//}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  position: relative;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  color: $text_2;
+  font-size: 15px;
+  line-height: 24px;
+  background-color: #F6F6F7;
+
+  > svg {
+    display: none;
+  }
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex-grow: 1;
+}
+
+.swiper-button-disabled {
+  opacity: 0.3;
+}

@@ -1,0 +1,77 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.Navigation {
+  display: flex;
+  align-items: center;
+  width: auto;
+  grid-gap: 12px;
+  @media (max-width: $tablet) {
+    grid-gap: 8px;
+  }
+}
+
+.Light {
+  .Prev,
+  .Next {
+    background-color: $primary;
+    // background-color: lighten($color: $primary, $amount: 5%);
+    svg {
+      stroke: white;
+    }
+
+    @media (max-width: $tablet) {
+      &:hover {
+        svg {
+          stroke: $white;
+        }
+      }
+    }
+    
+    &:hover:disabled {
+      background-color: $gray;
+      svg {
+        stroke: $gray;
+      }
+    }
+  }
+}
+
+.Prev,
+.Next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 34px;
+  min-height: 34px;
+  background-color: $white;
+  border-radius: 50%;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    @media (max-width: $tablet) {
+      opacity: 0.7;
+    }
+  }
+
+  &:hover {
+    svg {
+      stroke: $gray_light;
+    }
+  }
+
+  &:hover:disabled {
+    svg {
+      stroke: $gray_light;
+    }
+  }
+
+  svg {
+    transition: all 100ms;
+    fill: none;
+    stroke: none;
+  }
+}

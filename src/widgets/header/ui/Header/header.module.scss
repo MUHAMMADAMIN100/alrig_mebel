@@ -1,0 +1,122 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.main_header {
+    // position: fixed;
+    // width: 100%;
+    // z-index: 50;
+}
+.body {
+    margin: 28px 0;
+    padding: 24px 28px;
+    background-color: $white;
+    border-radius: 20px;
+
+    @media (max-width: $tablet) {
+        padding: 18px 20px;
+    }
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-gap: 24px;
+    width: 100%;
+
+    @media (max-width: $desktop) {
+        width: 100%;
+    }
+}
+.bl_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo {
+    @media (max-width: $tablet) {
+        width: 80px;
+        height: 45px;
+    }
+}
+
+.items {
+    display: flex;
+    grid-gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.link {
+    text-decoration: none;
+    color: $black;
+    padding: 10px 16px;
+    border-radius: 50px;
+    transition: all .2s;
+    &:hover {
+        // color: darken($primary, 7%);
+        outline: 1px solid $primary;
+        background-color: rgba(175, 1, 1, 0.1);
+        color: $primary;
+    }
+}
+.nav{
+    display: block;
+
+    @media (max-width: $desktopSmall) {
+        display: none;
+    }
+}
+
+.body {
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 20px;
+
+    @media (max-width: $desktopSmall) {
+        grid-gap: 0;
+    }
+}
+
+.button {
+    display: block !important; 
+    @media (max-width: $desktopSmall) {
+        display: none !important;
+    }
+}
+.main_header {
+  position: relative;
+
+  @media (max-width: $tablet) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    // полупрозрачный фон + размытие
+    background: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(12px);
+
+    // на случай Safari
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+.body {
+  margin: 28px 0;
+  padding: 24px 28px;
+  background-color: $white;
+  border-radius: 20px;
+
+  @media (max-width: $tablet) {
+    margin: 0;
+    padding: 12px 0px;
+
+    background: transparent; // убираем белый фон у body
+    border-radius: 0;
+  }
+}
+
+.link_small {
+    text-decoration: none;
+}

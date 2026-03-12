@@ -1,0 +1,66 @@
+@import '../../styles/variables';
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.content {
+  @media (max-width: $tablet) {
+    margin-top: 68px;
+  }
+}
+
+.musicControl {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1001;
+
+  button {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    backdrop-filter: blur(8px);
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+}
+
+/* 🌨 Снег */
+
+.snow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none; // главное: не блокирует клики
+  overflow: hidden;
+  z-index: 1000; // ниже кнопки музыки, но поверх контента
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: #fff;
+  opacity: 0.8;
+  user-select: none;
+  animation-name: snow-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes snow-fall {
+  0% {
+    transform: translate3d(0, -10px, 0);
+  }
+  100% {
+    transform: translate3d(var(--x-move, 0px), 110vh, 0);
+  }
+}

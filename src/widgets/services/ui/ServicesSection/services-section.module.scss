@@ -1,0 +1,72 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.wrapper {
+  padding-top: 50px;
+
+  @media (max-width: $tablet) {
+    padding-top: 40px;
+  }
+}
+
+.section {
+  /* Чтобы GPU помогал и не было лагов */
+  will-change: opacity, transform;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  grid-gap: 20px;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    grid-gap: 0;
+    margin-bottom: 24px;
+  }
+}
+
+.bl_subtitle {
+  display: flex;
+  align-items: center;
+  grid-gap: 16px;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    grid-gap: 24px;
+    width: 100%;
+  }
+}
+
+.button {
+  @media (max-width: $tablet) {
+    width: 100%;
+  }
+}
+
+/* === Раннее «мгновенное» появление без задержки ===
+   Контент в DOM есть сразу (нет пустоты), визуально мягко проявляется */
+.reveal {
+  /* видимо сразу, но без резкого «всплытия» */
+  opacity: 0.999;         /* хак против некоторых миганий при первом рендере */
+  transform: translateY(6px);
+}
+
+.isVisible {
+  opacity: 1;
+  transform: none;
+  transition: opacity .28s ease-out, transform .28s ease-out;
+}
+
+/* Если у пользователя включено «уменьшить анимацию» */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .isVisible {
+    transition: none;
+  }
+}

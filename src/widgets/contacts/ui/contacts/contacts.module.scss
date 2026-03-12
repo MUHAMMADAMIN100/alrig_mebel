@@ -1,0 +1,92 @@
+@import '../../../.../../../styles/variables';
+@import '../../../.../../../styles/mixins';
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 140px;
+
+    @media (max-width: $tablet) {
+        margin-bottom: 100px;
+        padding-top: 40px;
+    }
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 40px;
+
+    @media (max-width: $tablet) {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-bottom: 24px;
+    }
+}
+.content {
+    display: flex;
+    flex-direction: column;
+}
+.left {
+    background-color: $white;
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 24px;
+    @media (max-width: $tablet) {
+        background-color: transparent;
+    }
+}
+.title {
+    @media (max-width: $tablet) {
+        font-size: 36px;
+    }
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    height: 100%;
+    box-sizing: border-box;
+
+    @media (max-width: $tablet) {
+        padding: 0;
+    }
+}
+.bl_info {
+    // @media (max-width: $tablet) {
+    //     margin-bottom: 24px;
+    // }
+}
+
+.date {
+    margin: 0;
+    font-style: normal;
+    font-family: 'Arsenal';
+}
+
+
+.items {
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 16px;
+    box-sizing: border-box;
+
+    @media (max-width: $tablet) {
+        display: flex;
+        flex-direction: column;
+        grid-gap: 16px;
+        background-color: transparent ;
+    }
+}
+
+.map {
+    height: 540px;
+
+    @media (max-width: $tablet) {
+        height: 420px;
+    }
+}

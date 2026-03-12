@@ -1,0 +1,120 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: rgba(51, 51, 51, 0.55);
+  backdrop-filter: blur(4.5px);
+}
+
+.content {
+  width: 100%;
+  position: relative;
+  z-index: 99;
+  max-height: 100%;
+  overflow: auto;
+  padding: 40px 0;
+  box-sizing: border-box;
+}
+
+.close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 999;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  padding: 0;
+
+  svg {
+    stroke: #fff;
+  }
+}
+
+.swiper {
+  .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto !important;
+  }
+}
+
+.img {
+  max-width: 90vw;
+  max-height: 70vh;
+  //width: 100%;
+  width: fit-content;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+  background: #cccccc;
+  border-radius: 16px;
+  overflow: hidden;
+
+  @media (max-width: $tablet) {
+    border-radius: 4px;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+
+  @media (min-width: $desktop) {
+    margin-top: 32px;
+  }
+}
+
+.navigation {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 24px;
+  right: 24px;
+  z-index: 999;
+  pointer-events: none;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateY(-50px);
+
+  @media (min-width: $desktop) {
+    display: flex;
+  }
+}
+
+.prev,
+.next {
+  background: none;
+  padding: 0;
+  border: none;
+  display: block;
+  pointer-events: auto;
+
+  svg {
+    stroke: $white ;
+    fill: none;
+  }
+}

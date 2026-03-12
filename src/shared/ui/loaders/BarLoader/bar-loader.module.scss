@@ -1,0 +1,10 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.bars {
+  display: block;
+}
+
+:export {
+  primary: $primary;
+}
