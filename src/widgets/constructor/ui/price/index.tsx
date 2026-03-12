@@ -197,7 +197,7 @@ export const PriceConstructor = () => {
         ? `Круглый стол (Ø ${cfg.diameterCm} см)`
         : `Прямоугольный стол (${cfg.lengthCm}×${cfg.widthCm} см)`
 
-    let text = `<b>Новый заказ Loftory ${orderId}</b>\n\n`
+    let text = `<b>Новый заказ Alrig ${orderId}</b>\n\n`
     text += `<b>Имя:</b> ${data.name}\n`
     text += `<b>Телефон:</b> ${data.number}\n`
     if (data.contact) text += `<b>Telegram/Email:</b> ${data.contact}\n`

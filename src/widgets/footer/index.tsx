@@ -68,7 +68,7 @@ export const Footer = () => {
                 </div>
                 <div className={classes.footer_bottom} >
                     <p className={classes.bottom_text} >
-                        © Loftory, 2025. Разработано в <a className={classes.bottom_link} href='https://www.webrand.tj/' target='_blank' >
+                        © Alrig, 2025. Разработано в <a className={classes.bottom_link} href='https://www.webrand.tj/' target='_blank' >
                             {/* <WeBrandSvg className={classes.webrand_icon} /> */}
                             WeBrand
                         </a>

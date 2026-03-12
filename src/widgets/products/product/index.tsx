@@ -99,7 +99,7 @@ export const Product = ({
   const onSubmit = async (data: OrderFormData) => {
     const orderId = `LF-${Math.floor(100000 + Math.random() * 900000)}`;
 
-    let text = `<b>Новый заказ Loftory ${orderId}</b>\n\n`;
+    let text = `<b>Новый заказ Alrig ${orderId}</b>\n\n`;
     text += `<b>Товар:</b> ${title}\n`;
     if (subtitle) text += `<b>Размер:</b> ${subtitle}\n`;
     if (typeof priceFrom === "number") {

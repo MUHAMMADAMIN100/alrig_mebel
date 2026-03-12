@@ -12,7 +12,7 @@ export const Price = () => {
             <div className={classes.ribbon}>Loft мебель</div>
 
             <div className={classes.inner}>
-              <p className={classes.label}>Loftory</p>
+              <p className={classes.label}>Alrig</p>
 
               <h2 className={classes.title}>
                 Столы и табуретки в стиле Loft
