@@ -9,6 +9,7 @@ const Layout = () => {
   const location = useLocation();
 
   // Скролл к верху при переходе по страницам
+  
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [location.pathname]);
