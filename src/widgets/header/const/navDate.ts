@@ -6,11 +6,6 @@ export const navDate: INav[] = [
         name: 'Микроволновые печи',
         link: '/products',
     },
-    {
-        id: 2,
-        name: 'Индивидуальный заказ',
-        link: '/custom-order',
-    },
     // {
     //     id: 3,
     //     name: 'Доставка',       

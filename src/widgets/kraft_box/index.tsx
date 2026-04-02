@@ -3,21 +3,21 @@ import { Wrapper } from "../../shared/ui/Wrapper";
 
 const categories = [
   {
-    src: "/assets/products/l/1.webp",
-    name: "Рабочий стол",
+    src: "/assets/products/washing machine/washing machine 6kg.png",
+    name: "Стиральные машины",
   },
   {
-    src: "/assets/products/r/1.webp",
-    name: "Круглые столы",
+    src: "/assets/products/microvawe/microwawe black.png",
+    name: "Микроволновые печи",
   },
   {
-    src: "/assets/products/t/1.webp",
-    name: "Табуретки",
+    src: "/assets/products/kholodilnik/kholodilnik.png",
+    name: "Холодильники",
   },
   {
-    src: "/assets/products/k/4.webp",
-    name: "Для дома",
-  }
+    src: "/assets/products/dukhovka/dukhovka black.png",
+    name: "Духовки",
+  },
 ];
 
 export const KraftBox = () => {
