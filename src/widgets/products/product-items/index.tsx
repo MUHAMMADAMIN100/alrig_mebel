@@ -22,6 +22,15 @@ const products: ProductCard[] = [
     badges: ["В наличии", "Рассрочка Salom"],
   },
   {
+    id: "washing-machine-10kg",
+    slug: "washing-machine",
+    title: "Стиральная машина",
+    size: "10 кг / BLDC Inverter",
+    priceFrom: 2400,
+    image: "/assets/products/washing machine/MaHINE.png",
+    badges: ["В наличии", "Рассрочка Salom"],
+  },
+  {
     id: "microwave",
     slug: "microwave",
     title: "Микроволновая печь",
