@@ -7,8 +7,8 @@ export const KholodilnikPage = () => {
       priceFrom={2500}
       badges={["В наличии", "Рассрочка Salom"]}
       images={[
-        "/assets/products/kholodilnik/kholodilnik.png",
-        "/assets/products/kholodilnik/kholod black.png",
+        "/assets/products/kholodilnik/b1.jpg",
+        "/assets/products/kholodilnik/b2.jpg",
       ]}
       description={
         "Холодильник. Доступен в нескольких цветах.\n" +

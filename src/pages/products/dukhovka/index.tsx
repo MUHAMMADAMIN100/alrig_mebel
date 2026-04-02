@@ -7,12 +7,12 @@ export const DukhovkaPage = () => {
       priceFrom={1000}
       badges={["В наличии", "Рассрочка Salom"]}
       images={[
-        "/assets/products/dukhovka/dukhovka black.png",
-        "/assets/products/dukhovka/dukhovka brown.png",
-        "/assets/products/dukhovka/dukhovka black by id.png",
-        "/assets/products/dukhovka/dukhovka brown by id.png",
-        "/assets/products/dukhovka/dikhovka by id black.png",
-        "/assets/products/dukhovka/dulhovka blackk.png",
+        "/assets/products/dukhovka/c1.jpg",
+        "/assets/products/dukhovka/c2.jpg",
+        "/assets/products/dukhovka/e1.jpg",
+        "/assets/products/dukhovka/e2.jpg",
+        "/assets/products/dukhovka/r1.jpg",
+        "/assets/products/dukhovka/r2.jpg",
       ]}
       description={
         "Духовка. Доступна в чёрном и коричневом цветах.\n" +

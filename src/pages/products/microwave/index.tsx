@@ -8,7 +8,7 @@ export const MicrowavePage = () => {
       priceFrom={600}
       badges={["В наличии", "Рассрочка Salom"]}
       images={[
-        "/assets/products/microvawe/microwawe black.png",
+        "/assets/products/microvawe/h1.jpg",
       ]}
       description={
         "Микроволновая печь в чёрном цвете.\n" +

@@ -8,8 +8,8 @@ export const WashingMachinePage = () => {
       priceFrom={1800}
       badges={["В наличии", "Рассрочка Salom"]}
       images={[
-        "/assets/products/washing machine/washing machine 6kg.png",
-        "/assets/products/washing machine/washing mascine.png",
+        "/assets/products/washing machine/Market 1.png",
+        "/assets/products/washing machine/Market 1 1ы.jpg",
       ]}
       description={
         "Стиральная машина с загрузкой 6 кг.\n" +

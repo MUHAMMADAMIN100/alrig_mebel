@@ -18,7 +18,7 @@ const products: ProductCard[] = [
     title: "Стиральная машина",
     size: "6 кг",
     priceFrom: 1800,
-    image: "/assets/products/washing machine/washing machine 6kg.png",
+    image: "/assets/products/washing machine/mini-m2.jpg",
     badges: ["В наличии", "Рассрочка Salom"],
   },
   {
@@ -27,7 +27,7 @@ const products: ProductCard[] = [
     title: "Стиральная машина",
     size: "10 кг / BLDC Inverter",
     priceFrom: 2400,
-    image: "/assets/products/washing machine/MaHINE.png",
+    image: "/assets/products/washing machine/mini-m1.jpg",
     badges: ["В наличии", "Рассрочка Salom"],
   },
   {
@@ -36,7 +36,7 @@ const products: ProductCard[] = [
     title: "Микроволновая печь",
     size: "Чёрный цвет",
     priceFrom: 600,
-    image: "/assets/products/microvawe/microwawe black.png",
+    image: "/assets/products/microvawe/h1.jpg",
     badges: ["В наличии", "Рассрочка Salom"],
   },
   {
@@ -45,7 +45,7 @@ const products: ProductCard[] = [
     title: "Холодильник",
     size: "Белый / Чёрный",
     priceFrom: 2500,
-    image: "/assets/products/kholodilnik/kholodilnik.png",
+    image: "/assets/products/kholodilnik/mini-b.jpg",
     badges: ["В наличии", "Рассрочка Salom"],
   },
   {
@@ -54,7 +54,7 @@ const products: ProductCard[] = [
     title: "Духовка",
     size: "Чёрный / Коричневый",
     priceFrom: 1000,
-    image: "/assets/products/dukhovka/dukhovka black.png",
+    image: "/assets/products/dukhovka/mini-r.jpg",
     badges: ["В наличии", "Рассрочка Salom"],
   },
 ];
