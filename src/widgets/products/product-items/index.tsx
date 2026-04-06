@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import classes from "./product-items.module.scss";
+import { ProductCardSkeletonGrid } from "../../../shared/ui/loaders/ProductCardSkeleton";
 
 type ProductCard = {
   id: string;
@@ -10,6 +11,11 @@ type ProductCard = {
   image: string;
   badges: string[];
 };
+
+interface ProductItemsProps {
+  isLoading?: boolean;
+  skeletonCount?: number;
+}
 
 const products: ProductCard[] = [
   {
@@ -60,7 +66,15 @@ const products: ProductCard[] = [
 ];
 
 
-export const ProductItems = () => {
+export const ProductItems = ({ isLoading = false, skeletonCount = 4 }: ProductItemsProps) => {
+  if (isLoading) {
+    return (
+      <div className={classes.product}>
+        <ProductCardSkeletonGrid count={skeletonCount} />
+      </div>
+    );
+  }
+
   return (
     <div className={classes.product}>
       <div className={classes.grid}>
