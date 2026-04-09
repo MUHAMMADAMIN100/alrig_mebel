@@ -1,0 +1,286 @@
+@import '../../../styles/variables';
+@import '../../../styles/colors';
+
+.pageHeader {
+  padding: 36px 0 28px;
+
+  @media (max-width: $tablet) {
+    padding: 24px 0 20px;
+  }
+}
+
+.back {
+  display: inline-block;
+  font-size: 14px;
+  color: $text_2;
+  text-decoration: none;
+  margin-bottom: 12px;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.pageTitle {
+  font-family: 'Arsenal', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+  color: $primary;
+
+  @media (max-width: $tablet) {
+    font-size: 1.7rem;
+  }
+}
+
+.pageCount {
+  margin: 0;
+  font-size: 14px;
+  color: $text_3;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-bottom: 60px;
+}
+
+/* ─── Product Card ─── */
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: $white;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+
+  @media (max-width: $desktopSmall) {
+    gap: 28px;
+    padding: 24px;
+  }
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+}
+
+/* Media column */
+.media {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mainImgWrap {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    display: block;
+    padding-top: 80%;
+  }
+}
+
+.mainImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badges {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.badge {
+  background: $primary;
+  color: $white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+
+.thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  background: none;
+  transition: border-color 0.15s;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.thumbActive {
+  border-color: $primary;
+}
+
+.noImage {
+  border-radius: 14px;
+  background: $brown;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: $text_3;
+  font-size: 14px;
+}
+
+/* Info column */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.infoTop {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.productTitle {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: $primary;
+
+  @media (max-width: $tablet) {
+    font-size: 20px;
+  }
+}
+
+.productSubtitle {
+  margin: 0;
+  font-size: 15px;
+  color: $text_2;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.priceValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: $primary;
+
+  @media (max-width: $tablet) {
+    font-size: 24px;
+  }
+}
+
+.priceCurrency {
+  font-size: 16px;
+  color: $text_2;
+}
+
+.description {
+  margin: 0;
+  font-size: 15px;
+  color: $text_2;
+  line-height: 1.55;
+}
+
+/* Specs */
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.specsTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: $primary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.specsTable {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid $gray;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-bottom: 1px solid $gray;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:nth-child(even) {
+    background: $gray_light;
+  }
+}
+
+.specLabel {
+  color: $text_2;
+  flex: 0 0 45%;
+}
+
+.specValue {
+  color: $primary;
+  font-weight: 500;
+  text-align: right;
+  flex: 1;
+}
+
+/* Phone button */
+.phoneBtn {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 2px solid $primary;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: $primary;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+  width: fit-content;
+
+  &:hover {
+    background: $primary;
+    color: $white;
+  }
+}

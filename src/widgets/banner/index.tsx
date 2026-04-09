@@ -1,101 +1,45 @@
-// Banner.tsx
-import { Link } from "react-router-dom";
-import { Button } from "../../shared/ui/Button";
-import { Wrapper } from "../../shared/ui/Wrapper";
-import classes from "./banner.module.scss";
-import RightIcon from "@icons/right.svg?react";
-import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Wrapper } from '../../shared/ui/Wrapper';
+import { categories } from '../../data/products';
+import classes from './banner.module.scss';
 
-const leftStagger = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.05 },
-  },
-};
-
-const lineUp = {
-  hidden: { opacity: 0, y: 18, filter: "blur(6px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
-
-const heroImage = {
-  hidden: { opacity: 0, x: 24, scale: 0.96, skewX: -4 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-    skewX: 0,
-    transition: { type: "spring", stiffness: 140, damping: 18, mass: 0.7 },
-  },
-};
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 export const Banner = () => {
   return (
     <Wrapper>
-      <div className={classes.banner}>
-        <motion.div
-          className={classes.left}
-          variants={leftStagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
+      <div className={classes.carouselWrap}>
+        <Swiper
+          modules={[Autoplay, Pagination, Navigation]}
+          autoplay={{ delay: 3500, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          navigation
+          loop
+          className={classes.swiper}
         >
-          <motion.div className={classes.info} variants={lineUp}>
-            <h1 className={classes.title}>
-              Alrig — техника для кухни и дома
-            </h1>
-          </motion.div>
-
-          <motion.p className={classes.description} variants={lineUp}>
-            Надёжная бытовая техника для дома и кухни.
-            В нашем ассортименте — холодильники, стиральные машины, микроволновые печи и другая техника для комфортной жизни.
-            Рассрочка через карту Salom и доставка по Душанбе.
-          </motion.p>
-
-          <motion.div
-            variants={lineUp}
-            whileHover="hover"
-            className={classes.buttonWrap}
-          >
-            <Link to="/products">
-              <Button
-                className={classes.button}
-                buttonSize="medium"
-                fullWidth
-              >
-                Посмотреть каталог
-                <motion.span
-                  className={classes.iconWrap}
-                  initial={false}
-                  animate={{}}
-                  whileHover={{ x: 4 }}
-                  transition={{ type: "spring", stiffness: 260, damping: 18 }}
-                >
-                  <RightIcon className={classes.icon} width={24} height={24} />
-                </motion.span>
-              </Button>
-            </Link>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          className={classes.rigth}
-          variants={heroImage}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.35 }}
-        >
-          <img
-            className={classes.img}
-            src={"./assets/icons/alrig_logoo.png"}
-            alt="Alrig — техника для кухни и дома"
-          />
-        </motion.div>
+          {categories.map((cat) => (
+            <SwiperSlide key={cat.id}>
+              <div className={classes.slide}>
+                <div
+                  className={classes.slideImage}
+                  style={{ backgroundImage: `url(${cat.coverImage})` }}
+                />
+                <div className={classes.slideOverlay} />
+                <div className={classes.slideContent}>
+                  <p className={classes.slideLabel}>Бытовая техника</p>
+                  <h2 className={classes.slideTitle}>{cat.name}</h2>
+                  <Link to={`/products/${cat.slug}`} className={classes.slideBtn}>
+                    Смотреть все →
+                  </Link>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </Wrapper>
   );
