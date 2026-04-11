@@ -10,6 +10,10 @@ import { MicrowavePage } from "./pages/products/microwave";
 import { KholodilnikPage } from "./pages/products/kholodilnik";
 import { DukhovkaPage } from "./pages/products/dukhovka";
 import { UtyugPage } from "./pages/products/utyug";
+import { ChaynikPage } from "./pages/products/chaynik";
+import { TermosPage } from "./pages/products/termos";
+import { VityazhkaPage } from "./pages/products/vityazhka";
+import { VarochnayaPanelPage } from "./pages/products/varochnaya-panel";
 
 function App() {
   const queryClient = new QueryClient();
@@ -25,6 +29,10 @@ function App() {
           <Route path='products/kholodilnik' element={<KholodilnikPage />} />
           <Route path='products/dukhovka' element={<DukhovkaPage />} />
           <Route path='products/utyug' element={<UtyugPage />} />
+          <Route path='products/chaynik' element={<ChaynikPage />} />
+          <Route path='products/termos' element={<TermosPage />} />
+          <Route path='products/vityazhka' element={<VityazhkaPage />} />
+          <Route path='products/varochnaya-panel' element={<VarochnayaPanelPage />} />
           <Route path='custom-order' element={<CompanyPage />} />
           <Route path='contacts' element={<ContactsPage />} />
         </Route>
