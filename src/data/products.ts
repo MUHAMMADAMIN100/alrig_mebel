@@ -73,14 +73,14 @@ export const categories: Category[] = [
     id: 'microwave',
     slug: 'microwave',
     name: 'Микроволновые печи',
-    coverImage: '/assets/products/microvawe/b20mxp07-silver.jpg',
+    coverImage: '/assets/products/microvawe/1.jpg',
     products: [
       {
         id: 'mw-b20mxp07-silver',
         title: 'Микроволновая печь ALRIG B20MXP07',
         subtitle: 'Серебристый цвет / 20 л',
         priceFrom: 850,
-        images: ['/assets/products/microvawe/b20mxp07-silver.jpg'],
+        images: ['/assets/products/microvawe/1.jpg'],
         badges: ['В наличии', 'Гарантия 5 лет', 'Рассрочка Salom'],
         specs: [
           { label: 'Модель', value: 'B20MXP07' },
@@ -101,7 +101,7 @@ export const categories: Category[] = [
         subtitle: 'Чёрный цвет / 20 л',
         priceFrom: 850,
         images: [
-          '/assets/products/microvawe/b20mxp07-black.jpg',
+          '/assets/products/microvawe/2.jpg',
           '/assets/products/microvawe/h1.jpg',
         ],
         badges: ['В наличии', 'Гарантия 5 лет', 'Рассрочка Salom'],
@@ -195,14 +195,14 @@ export const categories: Category[] = [
     id: 'utyug',
     slug: 'utyug',
     name: 'Утюги',
-    coverImage: '/assets/products/utyug/steam-iron-sfb1991.jpg',
+    coverImage: '/assets/products/utyug/4.jpg',
     products: [
       {
         id: 'iron-sfb1991',
         title: 'Паровой утюг ALRIG Steam Iron',
         subtitle: 'S.F.B 1991 / 3000 Вт',
         priceFrom: 550,
-        images: ['/assets/products/utyug/steam-iron-sfb1991.jpg'],
+        images: ['/assets/products/utyug/4.jpg'],
         badges: ['В наличии', 'Гарантия 5 лет', 'Рассрочка Salom'],
         specs: [
           { label: 'Модель', value: 'S.F.B 1991' },
@@ -228,14 +228,14 @@ export const categories: Category[] = [
     id: 'chaynik',
     slug: 'chaynik',
     name: 'Электрические чайники',
-    coverImage: '/assets/products/chaynik/sfb1991.jpg',
+    coverImage: '/assets/products/chaynik/5.jpg',
     products: [
       {
         id: 'kettle-sfb1991',
         title: 'Электрический чайник ALRIG',
         subtitle: 'S.F.B 1991 / 2 л',
         priceFrom: 450,
-        images: ['/assets/products/chaynik/sfb1991.jpg'],
+        images: ['/assets/products/chaynik/5.jpg'],
         badges: ['В наличии', 'Гарантия 3 года', 'Рассрочка Salom'],
         specs: [
           { label: 'Модель', value: 'S.F.B 1991' },
@@ -259,14 +259,14 @@ export const categories: Category[] = [
     id: 'termos',
     slug: 'termos',
     name: 'Термосы',
-    coverImage: '/assets/products/termos/vacuum-jug-sfb1991.jpg',
+    coverImage: '/assets/products/termos/3.jpg',
     products: [
       {
         id: 'vacuum-jug-sfb1991',
         title: 'Термос ALRIG Vacuum Jug',
         subtitle: 'S.F.B 1991 / 2 л / NEW 2026',
         priceFrom: 350,
-        images: ['/assets/products/termos/vacuum-jug-sfb1991.jpg'],
+        images: ['/assets/products/termos/3.jpg'],
         badges: ['В наличии', 'NEW 2026', 'Гарантия 3 года'],
         specs: [
           { label: 'Модель', value: 'S.F.B 1991' },
@@ -289,14 +289,14 @@ export const categories: Category[] = [
     id: 'vityazhka',
     slug: 'vityazhka',
     name: 'Вытяжки',
-    coverImage: '/assets/products/vityazhka/alrig-display.jpg',
+    coverImage: '/assets/products/vityazhka/6.jpg',
     products: [
       {
         id: 'hood-alrig-display',
         title: 'Кухонная вытяжка ALRIG',
         subtitle: 'Сенсорный дисплей / LED',
         priceFrom: 1500,
-        images: ['/assets/products/vityazhka/alrig-display.jpg'],
+        images: ['/assets/products/vityazhka/6.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Подвесная' },
@@ -315,7 +315,7 @@ export const categories: Category[] = [
         title: 'Кухонная вытяжка ALRIG',
         subtitle: 'Классическая чёрная',
         priceFrom: 1200,
-        images: ['/assets/products/vityazhka/alrig-1200.jpg'],
+        images: ['/assets/products/vityazhka/8.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Подвесная' },
@@ -333,7 +333,7 @@ export const categories: Category[] = [
         title: 'Наклонная вытяжка ALRIG',
         subtitle: 'Со стеклянным экраном',
         priceFrom: 1800,
-        images: ['/assets/products/vityazhka/alrig-glass.jpg'],
+        images: ['/assets/products/vityazhka/10.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Наклонная со стеклом' },
@@ -351,7 +351,7 @@ export const categories: Category[] = [
         title: 'Встраиваемая вытяжка ALRIG',
         subtitle: 'Телескопическая',
         priceFrom: 3000,
-        images: ['/assets/products/vityazhka/alrig-built-in.jpg'],
+        images: ['/assets/products/vityazhka/14.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Встраиваемая (телескопическая)' },
@@ -369,7 +369,7 @@ export const categories: Category[] = [
         title: 'Кухонная вытяжка Gorenj',
         subtitle: 'С прозрачным фильтром',
         priceFrom: 1600,
-        images: ['/assets/products/vityazhka/gorenj.jpg'],
+        images: ['/assets/products/vityazhka/7.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Бренд', value: 'Gorenj' },
@@ -390,14 +390,14 @@ export const categories: Category[] = [
     id: 'varochnaya-panel',
     slug: 'varochnaya-panel',
     name: 'Варочные панели',
-    coverImage: '/assets/products/varochnaya/alrig-gas-3800.jpg',
+    coverImage: '/assets/products/varochnaya/13.jpg',
     products: [
       {
         id: 'cooktop-gas-glass-3800',
         title: 'Газовая варочная панель ALRIG',
         subtitle: '4 газовые конфорки / стекло',
         priceFrom: 3800,
-        images: ['/assets/products/varochnaya/alrig-gas-3800.jpg'],
+        images: ['/assets/products/varochnaya/13.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Газовая' },
@@ -416,7 +416,7 @@ export const categories: Category[] = [
         title: 'Комбинированная варочная панель ALRIG',
         subtitle: '2 газа + 2 электро / стекло',
         priceFrom: 3500,
-        images: ['/assets/products/varochnaya/alrig-combo-glass.jpg'],
+        images: ['/assets/products/varochnaya/11.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Комбинированная (газ + электро)' },
@@ -435,7 +435,7 @@ export const categories: Category[] = [
         title: 'Комбинированная варочная панель ALRIG',
         subtitle: '2 газа + 2 электро / нержавейка',
         priceFrom: 3200,
-        images: ['/assets/products/varochnaya/alrig-combo-steel.jpg'],
+        images: ['/assets/products/varochnaya/9.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Комбинированная (газ + электро)' },
@@ -453,7 +453,7 @@ export const categories: Category[] = [
         title: 'Электрическая варочная панель ALRIG',
         subtitle: '4 чугунные конфорки',
         priceFrom: 2400,
-        images: ['/assets/products/varochnaya/alrig-electric-coil.jpg'],
+        images: ['/assets/products/varochnaya/12.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Электрическая' },
@@ -472,7 +472,7 @@ export const categories: Category[] = [
         title: 'Стеклокерамическая варочная панель ALRIG',
         subtitle: '4 зоны нагрева / сенсор',
         priceFrom: 2800,
-        images: ['/assets/products/varochnaya/alrig-ceramic.jpg'],
+        images: ['/assets/products/varochnaya/15.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Электрическая стеклокерамика' },
