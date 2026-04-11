@@ -1,0 +1,6 @@
+# https://alrig.tj
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://alrig.tj/sitemap.xml
