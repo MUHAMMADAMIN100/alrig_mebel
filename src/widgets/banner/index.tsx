@@ -26,7 +26,7 @@ export const Banner = () => {
               <div className={classes.slide}>
                 <div
                   className={classes.slideImage}
-                  style={{ backgroundImage: `url(${cat.coverImage})` }}
+                  style={{ backgroundImage: `url("${cat.coverImage}")` }}
                 />
                 <div className={classes.slideOverlay} />
                 <div className={classes.slideContent}>
