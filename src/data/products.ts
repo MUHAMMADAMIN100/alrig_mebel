@@ -315,7 +315,7 @@ export const categories: Category[] = [
         title: 'Кухонная вытяжка ALRIG',
         subtitle: 'Классическая чёрная',
         priceFrom: 1200,
-        images: ['/assets/products/vityazhka/8.jpg'],
+        images: ['/assets/products/varochnaya/11.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Подвесная' },
@@ -333,7 +333,7 @@ export const categories: Category[] = [
         title: 'Наклонная вытяжка ALRIG',
         subtitle: 'Со стеклянным экраном',
         priceFrom: 1800,
-        images: ['/assets/products/vityazhka/10.jpg'],
+        images: ['/assets/products/varochnaya/15.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Наклонная со стеклом' },
@@ -351,7 +351,7 @@ export const categories: Category[] = [
         title: 'Встраиваемая вытяжка ALRIG',
         subtitle: 'Телескопическая',
         priceFrom: 3000,
-        images: ['/assets/products/vityazhka/14.jpg'],
+        images: ['/assets/products/vityazhka/7.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Встраиваемая (телескопическая)' },
@@ -369,7 +369,7 @@ export const categories: Category[] = [
         title: 'Кухонная вытяжка Gorenj',
         subtitle: 'С прозрачным фильтром',
         priceFrom: 1600,
-        images: ['/assets/products/vityazhka/7.jpg'],
+        images: ['/assets/products/varochnaya/12.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Бренд', value: 'Gorenj' },
@@ -390,14 +390,14 @@ export const categories: Category[] = [
     id: 'varochnaya-panel',
     slug: 'varochnaya-panel',
     name: 'Варочные панели',
-    coverImage: '/assets/products/varochnaya/13.jpg',
+    coverImage: '/assets/products/vityazhka/10.jpg',
     products: [
       {
         id: 'cooktop-gas-glass-3800',
         title: 'Газовая варочная панель ALRIG',
         subtitle: '4 газовые конфорки / стекло',
         priceFrom: 3800,
-        images: ['/assets/products/varochnaya/13.jpg'],
+        images: ['/assets/products/vityazhka/10.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Газовая' },
@@ -416,7 +416,7 @@ export const categories: Category[] = [
         title: 'Комбинированная варочная панель ALRIG',
         subtitle: '2 газа + 2 электро / стекло',
         priceFrom: 3500,
-        images: ['/assets/products/varochnaya/11.jpg'],
+        images: ['/assets/products/varochnaya/13.jpg'],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Комбинированная (газ + электро)' },
@@ -449,30 +449,14 @@ export const categories: Category[] = [
           'Прочная комбинированная варочная панель ALRIG из нержавеющей стали. 2 газовые и 2 электрические конфорки. Долговечная и надёжная.',
       },
       {
-        id: 'cooktop-electric-coil',
-        title: 'Электрическая варочная панель ALRIG',
-        subtitle: '4 чугунные конфорки',
-        priceFrom: 2400,
-        images: ['/assets/products/varochnaya/12.jpg'],
-        badges: ['В наличии', 'Рассрочка Salom'],
-        specs: [
-          { label: 'Тип', value: 'Электрическая' },
-          { label: 'Конфорки', value: '4 чугунные (блин)' },
-          { label: 'Поверхность', value: 'Эмаль' },
-          { label: 'Управление', value: 'Поворотные ручки' },
-          { label: 'Цвет', value: 'Чёрный' },
-          { label: 'Установка', value: 'Встраиваемая' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
-        ],
-        description:
-          'Электрическая варочная панель ALRIG с 4 классическими чугунными конфорками. Надёжная и долговечная. Простое управление поворотными ручками.',
-      },
-      {
         id: 'cooktop-ceramic',
         title: 'Стеклокерамическая варочная панель ALRIG',
         subtitle: '4 зоны нагрева / сенсор',
         priceFrom: 2800,
-        images: ['/assets/products/varochnaya/15.jpg'],
+        images: [
+          '/assets/products/vityazhka/14.jpg',
+          '/assets/products/vityazhka/8.jpg',
+        ],
         badges: ['В наличии', 'Рассрочка Salom'],
         specs: [
           { label: 'Тип', value: 'Электрическая стеклокерамика' },
