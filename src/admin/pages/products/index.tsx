@@ -9,7 +9,7 @@ import { adminDeleteProduct } from '../../../shared/api/admin'
 import { ApiProduct } from '../../../shared/api/types'
 import { formatPrice } from '../../../shared/lib/formatPrice'
 import { Select } from '../../../shared/ui/Select'
-import { ConfirmDialog } from '../../components/ConfirmDialog'
+import { ConfirmModal } from '../../../shared/ui/ConfirmModal'
 import { apiErrorMessage } from '../../lib/apiError'
 import { ICON_SIZE, ICON_STROKE } from '../../lib/icons'
 import classes from '../../admin.module.scss'
@@ -24,6 +24,7 @@ export const AdminProductsPage = () => {
   const [subcategorySlug, setSubcategorySlug] = useState('')
   const [page, setPage] = useState(1)
   const [deleting, setDeleting] = useState<ApiProduct | null>(null)
+  const [deleteError, setDeleteError] = useState<string | null>(null)
 
   const [debouncedSearch] = useDebounceValue(search, 350)
 
@@ -53,18 +54,23 @@ export const AdminProductsPage = () => {
     (slug: string) => adminDeleteProduct(slug),
     {
       onSuccess: () => {
-        toast.success('Товар удалён')
+        toast.success('Удалено')
         queryClient.invalidateQueries('admin-products')
         queryClient.invalidateQueries('admin-products-count')
         queryClient.invalidateQueries('products')
         setDeleting(null)
+        setDeleteError(null)
       },
       onError: (error) => {
-        toast.error(apiErrorMessage(error, 'Не удалось удалить товар'))
-        setDeleting(null)
+        setDeleteError(apiErrorMessage(error, 'Не удалось удалить товар'))
       },
     },
   )
+
+  const closeDelete = () => {
+    setDeleting(null)
+    setDeleteError(null)
+  }
 
   const totalPages = products ? Math.ceil(products.count / PAGE_SIZE) : 0
 
@@ -238,13 +244,14 @@ export const AdminProductsPage = () => {
         </>
       )}
 
-      <ConfirmDialog
+      <ConfirmModal
         isOpen={!!deleting}
-        title="Удалить товар?"
-        text={`«${deleting?.name}${deleting?.subtitle ? ` (${deleting.subtitle})` : ''}» будет удалён безвозвратно вместе с фотографиями.`}
+        title={`Удалить товар «${deleting?.name ?? ''}»?`}
+        description="Товар будет удалён вместе с фотографиями. Действие необратимо."
         isLoading={deleteMutation.isLoading}
+        errorMessage={deleteError}
         onConfirm={() => deleting && deleteMutation.mutate(deleting.slug)}
-        onCancel={() => setDeleting(null)}
+        onCancel={closeDelete}
       />
     </div>
   )

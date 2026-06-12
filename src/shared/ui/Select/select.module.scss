@@ -49,6 +49,14 @@
   box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12);
 }
 
+.triggerInvalid {
+  border-color: $danger;
+
+  &:hover:not(:disabled) {
+    border-color: $danger;
+  }
+}
+
 .value {
   overflow: hidden;
   text-overflow: ellipsis;

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
@@ -15,7 +15,7 @@ import {
   ProductPayload,
   SpecRow,
 } from '../../../shared/api/admin'
-import { ConfirmDialog } from '../../components/ConfirmDialog'
+import { ConfirmModal } from '../../../shared/ui/ConfirmModal'
 import { Toggle } from '../../components/Toggle'
 import { ImageDropzone } from '../../components/ImageDropzone'
 import { apiErrorMessage } from '../../lib/apiError'
@@ -56,8 +56,19 @@ export const ProductFormPage = () => {
   const [isActive, setActive] = useState(true)
   const [isFeatured, setFeatured] = useState(false)
   const [deletingImageId, setDeletingImageId] = useState<number | null>(null)
+  const [imageDeleteError, setImageDeleteError] = useState<string | null>(null)
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>({
+  // ручные ошибки валидации (поля вне react-hook-form)
+  const [categoryError, setCategoryError] = useState('')
+  const [subcategoryError, setSubcategoryError] = useState('')
+  const [imageError, setImageError] = useState('')
+  const [specError, setSpecError] = useState('')
+
+  const placementRef = useRef<HTMLDivElement>(null)
+  const photosRef = useRef<HTMLDivElement>(null)
+  const specsRef = useRef<HTMLDivElement>(null)
+
+  const { register, handleSubmit, reset, getValues, formState: { errors } } = useForm<FormValues>({
     defaultValues: {
       name: '', slug: '', subtitle: '', description: '',
       price: '', old_price: '', currency: 'сомони', order: 0,
@@ -94,13 +105,19 @@ export const ProductFormPage = () => {
   const handleCategoryChange = (value: string) => {
     setCategoryId(value)
     setSubcategoryId('')
+    setCategoryError('')
+    setSubcategoryError('')
   }
 
   // ── характеристики ──
   const addSpec = () => setSpecs([...specs, { label: '', value: '' }])
-  const removeSpec = (index: number) => setSpecs(specs.filter((_, i) => i !== index))
+  const removeSpec = (index: number) => {
+    setSpecs(specs.filter((_, i) => i !== index))
+    setSpecError('')
+  }
   const updateSpec = (index: number, key: keyof SpecRow, value: string) => {
     setSpecs(specs.map((s, i) => (i === index ? { ...s, [key]: value } : s)))
+    setSpecError('')
   }
   const moveSpec = (index: number, dir: -1 | 1) => {
     const target = index + dir
@@ -178,23 +195,42 @@ export const ProductFormPage = () => {
     (imageId: number) => adminDeleteProductImage(imageId),
     {
       onSuccess: () => {
-        toast.success('Фото удалено')
+        toast.success('Удалено')
         setDeletingImageId(null)
+        setImageDeleteError(null)
         queryClient.invalidateQueries(['admin-product', slug])
         queryClient.invalidateQueries('admin-products')
       },
       onError: (error) => {
-        toast.error(apiErrorMessage(error))
-        setDeletingImageId(null)
+        setImageDeleteError(apiErrorMessage(error))
       },
     },
   )
 
+  const closeImageDelete = () => {
+    setDeletingImageId(null)
+    setImageDeleteError(null)
+  }
+
   const onSubmit = (values: FormValues) => {
-    if (!subcategoryId) {
-      toast.error('Выберите категорию и подкатегорию')
+    const catErr = !categoryId ? 'Выберите категорию' : ''
+    const subErr = categoryId && !subcategoryId ? 'Выберите подкатегорию' : ''
+    const totalImages = (isEdit && product ? product.images.length : 0) + newFiles.length
+    const imgErr = totalImages < 1 ? 'Добавьте хотя бы одно фото' : ''
+    const specPartial = specs.some((s) => Boolean(s.label.trim()) !== Boolean(s.value.trim()))
+    const spErr = specPartial ? 'Заполните и характеристику, и значение (или удалите пустую строку)' : ''
+
+    setCategoryError(catErr)
+    setSubcategoryError(subErr)
+    setImageError(imgErr)
+    setSpecError(spErr)
+
+    if (catErr || subErr || imgErr || spErr) {
+      const target = catErr || subErr ? placementRef.current : imgErr ? photosRef.current : specsRef.current
+      target?.scrollIntoView({ behavior: 'smooth', block: 'center' })
       return
     }
+
     saveMutation.mutate(values)
   }
 
@@ -232,6 +268,7 @@ export const ProductFormPage = () => {
                   <input
                     className={classes.input}
                     placeholder="Например: Микроволновая печь ALRIG B20MXP07"
+                    aria-invalid={!!errors.name}
                     {...register('name', { required: 'Укажите название' })}
                   />
                   {errors.name && <span className={classes.errorText}>{errors.name.message}</span>}
@@ -246,7 +283,16 @@ export const ProductFormPage = () => {
                 </div>
                 <div className={classes.field}>
                   <label className={classes.label}>Slug (автоматически)</label>
-                  <input className={classes.input} placeholder="auto" {...register('slug')} />
+                  <input
+                    className={classes.input}
+                    placeholder="auto"
+                    aria-invalid={!!errors.slug}
+                    {...register('slug', {
+                      validate: (v) =>
+                        !v.trim() || /^[a-z0-9-]+$/.test(v.trim()) || 'Только латиница, цифры и дефис',
+                    })}
+                  />
+                  {errors.slug && <span className={classes.errorText}>{errors.slug.message}</span>}
                 </div>
                 <div className={classes.fieldFull}>
                   <label className={classes.label}>Описание</label>
@@ -259,7 +305,7 @@ export const ProductFormPage = () => {
               </div>
             </div>
 
-            <div className={classes.card}>
+            <div className={classes.card} ref={placementRef}>
               <h3 className={local.cardTitle}>Размещение в каталоге</h3>
               <div className={classes.formGrid}>
                 <div className={classes.field}>
@@ -267,28 +313,32 @@ export const ProductFormPage = () => {
                   <Select
                     ariaLabel="Категория"
                     fullWidth
+                    invalid={!!categoryError}
                     placeholder="— Выберите категорию —"
                     value={categoryId}
                     onChange={handleCategoryChange}
                     options={(categories ?? []).map((cat) => ({ value: String(cat.id), label: cat.name }))}
                   />
+                  {categoryError && <span className={classes.errorText}>{categoryError}</span>}
                 </div>
                 <div className={classes.field}>
                   <label className={classes.label}>Подкатегория *</label>
                   <Select
                     ariaLabel="Подкатегория"
                     fullWidth
+                    invalid={!!subcategoryError}
                     disabled={!categoryId}
                     placeholder={categoryId ? '— Выберите подкатегорию —' : 'Сначала выберите категорию'}
                     value={subcategoryId}
-                    onChange={setSubcategoryId}
+                    onChange={(val) => { setSubcategoryId(val); setSubcategoryError('') }}
                     options={subcategoryOptions.map((sub) => ({ value: String(sub.id), label: sub.name }))}
                   />
+                  {subcategoryError && <span className={classes.errorText}>{subcategoryError}</span>}
                 </div>
               </div>
             </div>
 
-            <div className={classes.card}>
+            <div className={classes.card} ref={photosRef}>
               <h3 className={local.cardTitle}>Фотографии</h3>
 
               {isEdit && product && product.images.length > 0 && (
@@ -326,12 +376,13 @@ export const ProductFormPage = () => {
 
               <ImageDropzone
                 files={newFiles}
-                onChange={setNewFiles}
+                onChange={(files) => { setNewFiles(files); setImageError('') }}
                 hint={isEdit ? 'Новые фото добавятся в галерею после сохранения' : 'Первое фото станет главным'}
               />
+              {imageError && <span className={classes.errorText}>{imageError}</span>}
             </div>
 
-            <div className={classes.card}>
+            <div className={classes.card} ref={specsRef}>
               <div className={local.specsHead}>
                 <h3 className={local.cardTitle}>Характеристики</h3>
                 <button type="button" className={classes.btnGhost} onClick={addSpec}>
@@ -345,6 +396,8 @@ export const ProductFormPage = () => {
                   Добавьте пары «характеристика — значение», например «Мощность — 700 Вт».
                 </p>
               )}
+
+              {specError && <span className={classes.errorText}>{specError}</span>}
 
               <div className={local.specsList}>
                 {specs.map((spec, index) => (
@@ -396,7 +449,11 @@ export const ProductFormPage = () => {
                     step="0.01"
                     min="0"
                     placeholder="0"
-                    {...register('price', { required: 'Укажите цену' })}
+                    aria-invalid={!!errors.price}
+                    {...register('price', {
+                      required: 'Укажите цену',
+                      validate: (v) => Number(v) > 0 || 'Цена должна быть больше 0',
+                    })}
                   />
                   {errors.price && <span className={classes.errorText}>{errors.price.message}</span>}
                 </div>
@@ -408,8 +465,18 @@ export const ProductFormPage = () => {
                     step="0.01"
                     min="0"
                     placeholder="—"
-                    {...register('old_price')}
+                    aria-invalid={!!errors.old_price}
+                    {...register('old_price', {
+                      validate: (v) => {
+                        const s = v.trim()
+                        if (!s) return true
+                        const op = Number(s)
+                        if (Number.isNaN(op)) return 'Некорректная цена'
+                        return op > Number(getValues('price')) || 'Старая цена должна быть больше текущей'
+                      },
+                    })}
                   />
+                  {errors.old_price && <span className={classes.errorText}>{errors.old_price.message}</span>}
                 </div>
                 <div className={classes.field}>
                   <label className={classes.label}>Валюта</label>
@@ -444,13 +511,14 @@ export const ProductFormPage = () => {
         </div>
       </form>
 
-      <ConfirmDialog
+      <ConfirmModal
         isOpen={deletingImageId !== null}
         title="Удалить фото?"
-        text="Фотография будет удалена из галереи товара."
+        description="Фотография будет удалена из галереи товара. Действие необратимо."
         isLoading={deleteImageMutation.isLoading}
+        errorMessage={imageDeleteError}
         onConfirm={() => deletingImageId !== null && deleteImageMutation.mutate(deletingImageId)}
-        onCancel={() => setDeletingImageId(null)}
+        onCancel={closeImageDelete}
       />
     </div>
   )

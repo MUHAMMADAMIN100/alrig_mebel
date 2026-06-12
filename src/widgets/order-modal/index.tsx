@@ -26,8 +26,11 @@ export const OrderModal = ({ isOpen, close, productId, productName }: Props) => 
     register,
     handleSubmit,
     reset,
-    formState: { errors },
-  } = useForm<FormValues>({ defaultValues: { name: '', phone: '', comment: '' } })
+    formState: { errors, isValid },
+  } = useForm<FormValues>({
+    mode: 'onChange',
+    defaultValues: { name: '', phone: '+992 ', comment: '' },
+  })
 
   const mutation = useMutation(
     (payload: CreateOrderPayload) => createOrder(payload),
@@ -66,6 +69,7 @@ export const OrderModal = ({ isOpen, close, productId, productName }: Props) => 
         <form className={classes.form} onSubmit={handleSubmit(onSubmit)} noValidate>
           <Input
             label="Ваше имя"
+            aria-invalid={!!errors.name}
             errorMessage={errors.name?.message}
             {...register('name', {
               required: 'Укажите имя',
@@ -75,10 +79,17 @@ export const OrderModal = ({ isOpen, close, productId, productName }: Props) => 
           <Input
             label="Телефон"
             type="tel"
+            aria-invalid={!!errors.phone}
             errorMessage={errors.phone?.message}
             {...register('phone', {
               required: 'Укажите номер телефона',
-              minLength: { value: 7, message: 'Слишком короткий номер' },
+              validate: (value) => {
+                const digits = value.replace(/\D/g, '')
+                return (
+                  (digits.length === 12 && digits.startsWith('992')) ||
+                  'Введите номер в формате +992 XX XXX XX XX'
+                )
+              },
             })}
           />
           <Input
@@ -89,7 +100,7 @@ export const OrderModal = ({ isOpen, close, productId, productName }: Props) => 
           <Button
             type="submit"
             fullWidth
-            disabled={mutation.isLoading}
+            disabled={!isValid || mutation.isLoading}
             className={classes.submit}
           >
             {mutation.isLoading ? 'Отправляем…' : 'Отправить заявку'}

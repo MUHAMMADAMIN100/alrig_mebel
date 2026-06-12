@@ -23,6 +23,7 @@ interface Props {
   placeholder?: string
   disabled?: boolean
   fullWidth?: boolean
+  invalid?: boolean
   ariaLabel?: string
   className?: string
   id?: string
@@ -47,6 +48,7 @@ export const Select = ({
   placeholder = 'Выберите…',
   disabled,
   fullWidth,
+  invalid,
   ariaLabel,
   className,
   id,
@@ -191,6 +193,7 @@ export const Select = ({
         className={[
           classes.trigger,
           fullWidth ? classes.fullWidth : '',
+          invalid ? classes.triggerInvalid : '',
           open ? classes.triggerOpen : '',
           className ?? '',
         ]
@@ -201,6 +204,7 @@ export const Select = ({
         disabled={disabled}
         aria-haspopup="listbox"
         aria-expanded={open}
+        aria-invalid={invalid || undefined}
         aria-label={ariaLabel}
         aria-controls={open ? listId : undefined}
         aria-activedescendant={open && highlight >= 0 ? `${baseId}-opt-${highlight}` : undefined}

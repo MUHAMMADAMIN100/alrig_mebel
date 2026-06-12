@@ -426,6 +426,17 @@
   color: $danger;
 }
 
+// красная рамка у невалидного поля
+.input[aria-invalid='true'],
+.textarea[aria-invalid='true'] {
+  border-color: $danger;
+
+  &:focus {
+    border-color: $danger;
+    box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12);
+  }
+}
+
 // ── Тумблер ──
 
 .toggleRow {

@@ -13,7 +13,7 @@ import {
   SubcategoryPayload,
 } from '../../../shared/api/admin'
 import { ApiSubcategory } from '../../../shared/api/types'
-import { ConfirmDialog } from '../../components/ConfirmDialog'
+import { ConfirmModal } from '../../../shared/ui/ConfirmModal'
 import { Toggle } from '../../components/Toggle'
 import { ImageDropzone } from '../../components/ImageDropzone'
 import { apiErrorMessage } from '../../lib/apiError'
@@ -38,6 +38,7 @@ export const AdminSubcategoriesPage = () => {
   const [isActive, setActive] = useState(true)
   const [imageFiles, setImageFiles] = useState<File[]>([])
   const [deleting, setDeleting] = useState<ApiSubcategory | null>(null)
+  const [deleteError, setDeleteError] = useState<string | null>(null)
 
   const { register, control, handleSubmit, reset, formState: { errors } } = useForm<FormValues>()
 
@@ -82,16 +83,24 @@ export const AdminSubcategoriesPage = () => {
     (slug: string) => adminDeleteSubcategory(slug),
     {
       onSuccess: () => {
-        toast.success('Подкатегория удалена')
+        toast.success('Удалено')
         invalidate()
         setDeleting(null)
+        setDeleteError(null)
       },
       onError: (error) => {
-        toast.error(apiErrorMessage(error, 'Не удалось удалить подкатегорию'))
-        setDeleting(null)
+        setDeleteError(apiErrorMessage(error, 'Не удалось удалить подкатегорию'))
       },
     },
   )
+
+  const closeDelete = () => {
+    setDeleting(null)
+    setDeleteError(null)
+  }
+
+  // подкатегорию с товарами удалить нельзя (PROTECT)
+  const deleteBlocked = !!deleting && deleting.products_count > 0
 
   const openCreate = () => {
     setEditing(null)
@@ -220,6 +229,7 @@ export const AdminSubcategoriesPage = () => {
                     <Select
                       ariaLabel="Категория"
                       fullWidth
+                      invalid={!!errors.category}
                       placeholder="— Выберите категорию —"
                       value={field.value ?? ''}
                       onChange={field.onChange}
@@ -234,6 +244,7 @@ export const AdminSubcategoriesPage = () => {
                 <input
                   className={classes.input}
                   placeholder="Например: Стиральные машины"
+                  aria-invalid={!!errors.name}
                   {...register('name', { required: 'Укажите название' })}
                 />
                 {errors.name && <span className={classes.errorText}>{errors.name.message}</span>}
@@ -272,13 +283,19 @@ export const AdminSubcategoriesPage = () => {
         </div>
       </Modal>
 
-      <ConfirmDialog
+      <ConfirmModal
         isOpen={!!deleting}
-        title="Удалить подкатегорию?"
-        text={`«${deleting?.name}» будет удалена безвозвратно. Подкатегорию с товарами удалить нельзя.`}
+        title={`Удалить подкатегорию «${deleting?.name ?? ''}»?`}
+        description="Действие необратимо."
         isLoading={deleteMutation.isLoading}
+        confirmDisabled={deleteBlocked}
+        errorMessage={
+          deleteBlocked
+            ? 'Сначала удалите или перенесите товары этой подкатегории.'
+            : deleteError
+        }
         onConfirm={() => deleting && deleteMutation.mutate(deleting.slug)}
-        onCancel={() => setDeleting(null)}
+        onCancel={closeDelete}
       />
     </div>
   )

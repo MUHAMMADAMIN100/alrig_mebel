@@ -1,0 +1,144 @@
+@import 'src/styles/variables';
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(16, 17, 19, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.dialog {
+  width: 400px;
+  max-width: 100%;
+  padding: 28px 26px 22px;
+  background: $surface;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  text-align: center;
+}
+
+.iconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 16px;
+  color: $danger;
+  background: $danger-soft;
+  border-radius: 50%;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 19px;
+  font-weight: 700;
+  color: $ink;
+}
+
+.description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 21px;
+  color: $muted;
+}
+
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 11px 14px;
+  font-size: 13px;
+  line-height: 19px;
+  text-align: left;
+  color: $danger;
+  background: $danger-soft;
+  border-radius: $radius-sm;
+
+  svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.cancel,
+.confirm {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: filter $t-fast, border-color $t-fast, color $t-fast, box-shadow $t-fast;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+}
+
+.cancel {
+  color: $text;
+  background: $surface;
+  border: 1px solid $line;
+
+  &:hover:not(:disabled) {
+    border-color: $muted;
+    color: $ink;
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: $accent;
+    box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12);
+  }
+}
+
+.confirm {
+  color: $white;
+  background: $danger;
+  border: 1px solid $danger;
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.07);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.3);
+  }
+}
+
+.spinner {
+  animation: cmspin 0.7s linear infinite;
+}
+
+@keyframes cmspin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: $mobileLarge) {
+  .actions {
+    flex-direction: column-reverse;
+  }
+}

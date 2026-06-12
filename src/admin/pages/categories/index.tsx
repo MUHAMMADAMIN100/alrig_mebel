@@ -12,7 +12,7 @@ import {
   CategoryPayload,
 } from '../../../shared/api/admin'
 import { ApiCategory } from '../../../shared/api/types'
-import { ConfirmDialog } from '../../components/ConfirmDialog'
+import { ConfirmModal } from '../../../shared/ui/ConfirmModal'
 import { Toggle } from '../../components/Toggle'
 import { ImageDropzone } from '../../components/ImageDropzone'
 import { apiErrorMessage } from '../../lib/apiError'
@@ -34,6 +34,7 @@ export const AdminCategoriesPage = () => {
   const [isActive, setActive] = useState(true)
   const [imageFiles, setImageFiles] = useState<File[]>([])
   const [deleting, setDeleting] = useState<ApiCategory | null>(null)
+  const [deleteError, setDeleteError] = useState<string | null>(null)
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>()
 
@@ -70,16 +71,24 @@ export const AdminCategoriesPage = () => {
     (slug: string) => adminDeleteCategory(slug),
     {
       onSuccess: () => {
-        toast.success('Категория удалена')
+        toast.success('Удалено')
         invalidate()
         setDeleting(null)
+        setDeleteError(null)
       },
       onError: (error) => {
-        toast.error(apiErrorMessage(error, 'Не удалось удалить категорию'))
-        setDeleting(null)
+        setDeleteError(apiErrorMessage(error, 'Не удалось удалить категорию'))
       },
     },
   )
+
+  const closeDelete = () => {
+    setDeleting(null)
+    setDeleteError(null)
+  }
+
+  // категорию с подкатегориями удалить нельзя (PROTECT)
+  const deleteBlocked = !!deleting && deleting.subcategories.length > 0
 
   const openCreate = () => {
     setEditing(null)
@@ -192,6 +201,7 @@ export const AdminCategoriesPage = () => {
                 <input
                   className={classes.input}
                   placeholder="Например: Крупная техника"
+                  aria-invalid={!!errors.name}
                   {...register('name', { required: 'Укажите название' })}
                 />
                 {errors.name && <span className={classes.errorText}>{errors.name.message}</span>}
@@ -230,13 +240,19 @@ export const AdminCategoriesPage = () => {
         </div>
       </Modal>
 
-      <ConfirmDialog
+      <ConfirmModal
         isOpen={!!deleting}
-        title="Удалить категорию?"
-        text={`«${deleting?.name}» будет удалена безвозвратно. Категорию с подкатегориями удалить нельзя.`}
+        title={`Удалить категорию «${deleting?.name ?? ''}»?`}
+        description="Действие необратимо."
         isLoading={deleteMutation.isLoading}
+        confirmDisabled={deleteBlocked}
+        errorMessage={
+          deleteBlocked
+            ? 'Сначала удалите или перенесите подкатегории этой категории.'
+            : deleteError
+        }
         onConfirm={() => deleting && deleteMutation.mutate(deleting.slug)}
-        onCancel={() => setDeleting(null)}
+        onCancel={closeDelete}
       />
     </div>
   )

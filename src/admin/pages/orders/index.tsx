@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight, Inbox, Trash2 } from 'lucide-react'
 import WhatsAppIcon from '@icons/whatsapp.svg?react'
 import { adminDeleteOrder, adminGetOrders, adminUpdateOrder } from '../../../shared/api/admin'
 import { ApiOrder, Paginated } from '../../../shared/api/types'
-import { ConfirmDialog } from '../../components/ConfirmDialog'
+import { ConfirmModal } from '../../../shared/ui/ConfirmModal'
 import { StatusSelect } from '../../components/StatusSelect'
 import { apiErrorMessage } from '../../lib/apiError'
 import { ICON_SIZE, ICON_STROKE } from '../../lib/icons'
@@ -42,6 +42,7 @@ export const AdminOrdersPage = () => {
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all')
   const [search, setSearch] = useState('')
   const [deleting, setDeleting] = useState<ApiOrder | null>(null)
+  const [deleteError, setDeleteError] = useState<string | null>(null)
 
   const [debouncedSearch] = useDebounceValue(search, 350)
 
@@ -93,16 +94,21 @@ export const AdminOrdersPage = () => {
 
   const deleteMutation = useMutation((id: number) => adminDeleteOrder(id), {
     onSuccess: () => {
-      toast.success('Заявка удалена')
+      toast.success('Удалено')
       queryClient.invalidateQueries('admin-orders')
       queryClient.invalidateQueries('admin-orders-recent')
       setDeleting(null)
+      setDeleteError(null)
     },
     onError: (error) => {
-      toast.error(apiErrorMessage(error))
-      setDeleting(null)
+      setDeleteError(apiErrorMessage(error))
     },
   })
+
+  const closeDelete = () => {
+    setDeleting(null)
+    setDeleteError(null)
+  }
 
   const totalPages = orders ? Math.ceil(orders.count / PAGE_SIZE) : 0
   const isFiltered = statusFilter !== 'all' || debouncedSearch.length > 0
@@ -267,13 +273,14 @@ export const AdminOrdersPage = () => {
         </>
       )}
 
-      <ConfirmDialog
+      <ConfirmModal
         isOpen={!!deleting}
         title="Удалить заявку?"
-        text={`Заявка #${deleting?.id} от «${deleting?.name}» будет удалена безвозвратно.`}
+        description={`Заявка #${deleting?.id} от «${deleting?.name}». Действие необратимо.`}
         isLoading={deleteMutation.isLoading}
+        errorMessage={deleteError}
         onConfirm={() => deleting && deleteMutation.mutate(deleting.id)}
-        onCancel={() => setDeleting(null)}
+        onCancel={closeDelete}
       />
     </div>
   )
