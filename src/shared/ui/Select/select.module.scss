@@ -1,0 +1,129 @@
+@import 'src/styles/variables';
+
+// ════════ Триггер (поле-«таблетка») ════════
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 160px;
+  max-width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  color: $ink;
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: border-color $t-fast, box-shadow $t-fast;
+
+  &:hover:not(:disabled) {
+    border-color: $accent;
+  }
+
+  // мягкая акцентная рамка/тень из design-system (не системный outline)
+  &:focus-visible {
+    outline: none;
+    border-color: $accent;
+    box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: $bg;
+    color: $muted;
+  }
+}
+
+.fullWidth {
+  width: 100%;
+  min-width: 0;
+}
+
+.triggerOpen {
+  border-color: $accent;
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12);
+}
+
+.value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.placeholder {
+  color: $muted;
+  font-weight: 400;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: $muted;
+  transition: transform $t-fast;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+// ════════ Выпадающий список (в портале, position: fixed) ════════
+
+.menu {
+  position: fixed;
+  z-index: 1200;
+  padding: 6px;
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-md;
+  box-shadow: $shadow-lg;
+  overflow-y: auto;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: $text;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: background $t-fast, color $t-fast;
+}
+
+// hover / клавиатурная подсветка
+.optionActive {
+  background: $bg-soft;
+}
+
+// выбранный пункт — приглушённый акцентный фон + акцентный текст (без системной синей заливки)
+.optionSelected {
+  color: $accent;
+  background: $accent-soft;
+  font-weight: 600;
+
+  &.optionActive {
+    background: $accent-soft;
+  }
+}
+
+.optionLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.optionCheck {
+  flex-shrink: 0;
+  color: $accent;
+}

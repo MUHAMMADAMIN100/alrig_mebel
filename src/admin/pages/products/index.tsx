@@ -8,6 +8,7 @@ import { getCategories, getProducts, getSubcategories } from '../../../shared/ap
 import { adminDeleteProduct } from '../../../shared/api/admin'
 import { ApiProduct } from '../../../shared/api/types'
 import { formatPrice } from '../../../shared/lib/formatPrice'
+import { Select } from '../../../shared/ui/Select'
 import { ConfirmDialog } from '../../components/ConfirmDialog'
 import { apiErrorMessage } from '../../lib/apiError'
 import { ICON_SIZE, ICON_STROKE } from '../../lib/icons'
@@ -90,32 +91,28 @@ export const AdminProductsPage = () => {
           value={search}
           onChange={(e) => { setSearch(e.target.value); setPage(1) }}
         />
-        <select
-          className={classes.filterSelect}
+        <Select
+          ariaLabel="Фильтр по категории"
           value={categorySlug}
-          onChange={(e) => {
-            setCategorySlug(e.target.value)
+          onChange={(val) => {
+            setCategorySlug(val)
             setSubcategorySlug('')
             setPage(1)
           }}
-          aria-label="Фильтр по категории"
-        >
-          <option value="">Все категории</option>
-          {categories?.map((cat) => (
-            <option key={cat.id} value={cat.slug}>{cat.name}</option>
-          ))}
-        </select>
-        <select
-          className={classes.filterSelect}
+          options={[
+            { value: '', label: 'Все категории' },
+            ...(categories?.map((cat) => ({ value: cat.slug, label: cat.name })) ?? []),
+          ]}
+        />
+        <Select
+          ariaLabel="Фильтр по подкатегории"
           value={subcategorySlug}
-          onChange={(e) => { setSubcategorySlug(e.target.value); setPage(1) }}
-          aria-label="Фильтр по подкатегории"
-        >
-          <option value="">Все подкатегории</option>
-          {subcategoryOptions.map((sub) => (
-            <option key={sub.id} value={sub.slug}>{sub.name}</option>
-          ))}
-        </select>
+          onChange={(val) => { setSubcategorySlug(val); setPage(1) }}
+          options={[
+            { value: '', label: 'Все подкатегории' },
+            ...subcategoryOptions.map((sub) => ({ value: sub.slug, label: sub.name })),
+          ]}
+        />
       </div>
 
       {isLoading && !products && (

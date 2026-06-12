@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import toast from 'react-hot-toast'
 import { Layers, Loader2, Pencil, Plus, Trash2 } from 'lucide-react'
 import { Modal } from '../../../shared/ui/Modal'
+import { Select } from '../../../shared/ui/Select'
 import { getCategories, getSubcategories } from '../../../shared/api/catalog'
 import {
   adminCreateSubcategory,
@@ -38,7 +39,7 @@ export const AdminSubcategoriesPage = () => {
   const [imageFiles, setImageFiles] = useState<File[]>([])
   const [deleting, setDeleting] = useState<ApiSubcategory | null>(null)
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>()
+  const { register, control, handleSubmit, reset, formState: { errors } } = useForm<FormValues>()
 
   const filtered = useMemo(() => {
     if (!subcategories) return []
@@ -128,17 +129,15 @@ export const AdminSubcategoriesPage = () => {
       </div>
 
       <div className={classes.toolbar}>
-        <select
-          className={classes.filterSelect}
+        <Select
+          ariaLabel="Фильтр по категории"
           value={categoryFilter}
-          onChange={(e) => setCategoryFilter(e.target.value)}
-          aria-label="Фильтр по категории"
-        >
-          <option value="">Все категории</option>
-          {categories?.map((cat) => (
-            <option key={cat.id} value={cat.id}>{cat.name}</option>
-          ))}
-        </select>
+          onChange={setCategoryFilter}
+          options={[
+            { value: '', label: 'Все категории' },
+            ...(categories?.map((cat) => ({ value: String(cat.id), label: cat.name })) ?? []),
+          ]}
+        />
       </div>
 
       {isLoading && (
@@ -213,15 +212,21 @@ export const AdminSubcategoriesPage = () => {
             <div className={classes.formGrid}>
               <div className={classes.fieldFull}>
                 <label className={classes.label}>Категория *</label>
-                <select
-                  className={classes.select}
-                  {...register('category', { required: 'Выберите категорию' })}
-                >
-                  <option value="">— Выберите категорию —</option>
-                  {categories?.map((cat) => (
-                    <option key={cat.id} value={cat.id}>{cat.name}</option>
-                  ))}
-                </select>
+                <Controller
+                  name="category"
+                  control={control}
+                  rules={{ required: 'Выберите категорию' }}
+                  render={({ field }) => (
+                    <Select
+                      ariaLabel="Категория"
+                      fullWidth
+                      placeholder="— Выберите категорию —"
+                      value={field.value ?? ''}
+                      onChange={field.onChange}
+                      options={(categories ?? []).map((cat) => ({ value: String(cat.id), label: cat.name }))}
+                    />
+                  )}
+                />
                 {errors.category && <span className={classes.errorText}>{errors.category.message}</span>}
               </div>
               <div className={classes.fieldFull}>

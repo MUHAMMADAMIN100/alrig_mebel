@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 import toast from 'react-hot-toast'
 import { ArrowLeft, ChevronDown, ChevronUp, Loader2, Plus, Star, Trash2 } from 'lucide-react'
 import { getCategories, getProduct, getSubcategories } from '../../../shared/api/catalog'
+import { Select } from '../../../shared/ui/Select'
 import {
   adminCreateProduct,
   adminDeleteProductImage,
@@ -263,32 +264,26 @@ export const ProductFormPage = () => {
               <div className={classes.formGrid}>
                 <div className={classes.field}>
                   <label className={classes.label}>Категория *</label>
-                  <select
-                    className={classes.select}
+                  <Select
+                    ariaLabel="Категория"
+                    fullWidth
+                    placeholder="— Выберите категорию —"
                     value={categoryId}
-                    onChange={(e) => handleCategoryChange(e.target.value)}
-                  >
-                    <option value="">— Выберите категорию —</option>
-                    {categories?.map((cat) => (
-                      <option key={cat.id} value={cat.id}>{cat.name}</option>
-                    ))}
-                  </select>
+                    onChange={handleCategoryChange}
+                    options={(categories ?? []).map((cat) => ({ value: String(cat.id), label: cat.name }))}
+                  />
                 </div>
                 <div className={classes.field}>
                   <label className={classes.label}>Подкатегория *</label>
-                  <select
-                    className={classes.select}
-                    value={subcategoryId}
-                    onChange={(e) => setSubcategoryId(e.target.value)}
+                  <Select
+                    ariaLabel="Подкатегория"
+                    fullWidth
                     disabled={!categoryId}
-                  >
-                    <option value="">
-                      {categoryId ? '— Выберите подкатегорию —' : 'Сначала выберите категорию'}
-                    </option>
-                    {subcategoryOptions.map((sub) => (
-                      <option key={sub.id} value={sub.id}>{sub.name}</option>
-                    ))}
-                  </select>
+                    placeholder={categoryId ? '— Выберите подкатегорию —' : 'Сначала выберите категорию'}
+                    value={subcategoryId}
+                    onChange={setSubcategoryId}
+                    options={subcategoryOptions.map((sub) => ({ value: String(sub.id), label: sub.name }))}
+                  />
                 </div>
               </div>
             </div>

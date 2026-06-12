@@ -2,17 +2,18 @@ import { useState } from 'react'
 import { useProducts } from '../../../shared/api/hooks'
 import { ProductsParams } from '../../../shared/api/types'
 import { Pagination } from '../../../shared/ui/Pagination'
+import { Select, SelectOption } from '../../../shared/ui/Select'
 import { ProductCard } from '../product-card'
 import classes from './listing.module.scss'
 
 const PAGE_SIZE = 12
 
-const SORT_OPTIONS = [
+const SORT_OPTIONS: SelectOption[] = [
   { value: '', label: 'По умолчанию' },
   { value: 'price', label: 'Сначала дешевле' },
   { value: '-price', label: 'Сначала дороже' },
   { value: '-created_at', label: 'Сначала новые' },
-] as const
+]
 
 interface Props {
   filter: Pick<ProductsParams, 'category' | 'subcategory' | 'featured' | 'search'>
@@ -68,16 +69,12 @@ export const ProductListing = ({ filter }: Props) => {
         <p className={classes.count}>
           Найдено: <b>{data.count}</b>
         </p>
-        <select
-          className={classes.sort}
+        <Select
+          ariaLabel="Сортировка"
           value={ordering}
-          onChange={(e) => handleSort(e.target.value)}
-          aria-label="Сортировка"
-        >
-          {SORT_OPTIONS.map((opt) => (
-            <option key={opt.value} value={opt.value}>{opt.label}</option>
-          ))}
-        </select>
+          onChange={handleSort}
+          options={SORT_OPTIONS}
+        />
       </div>
 
       <div className={classes.grid}>
