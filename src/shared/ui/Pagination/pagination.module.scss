@@ -1,0 +1,44 @@
+@import 'src/styles/variables';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: $sp-6;
+}
+
+.page,
+.arrow {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid $line;
+  background: $surface;
+  border-radius: $radius-sm;
+  color: $text;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $t-fast;
+
+  &:hover:not(:disabled) {
+    border-color: $accent;
+    color: $accent;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}
+
+.active {
+  background: $accent;
+  border-color: $accent;
+  color: $white;
+
+  &:hover:not(:disabled) {
+    color: $white;
+  }
+}

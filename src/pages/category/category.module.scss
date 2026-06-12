@@ -1,0 +1,70 @@
+@import 'src/styles/variables';
+
+.header {
+  margin: $sp-6 0 $sp-5;
+
+  @media (max-width: $tablet) {
+    margin-top: $sp-5;
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 700;
+  color: $ink;
+
+  @media (max-width: $tablet) {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
+.subcats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: $sp-5;
+}
+
+.subcat {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 8px;
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-pill;
+  font-size: 14px;
+  font-weight: 600;
+  color: $ink;
+  text-decoration: none;
+  transition: border-color $t-fast, box-shadow $t-fast, transform $t-fast;
+
+  &:hover {
+    border-color: $accent;
+    transform: translateY(-2px);
+    box-shadow: $shadow-sm;
+  }
+}
+
+.subcatImage {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.subcatCount {
+  font-size: 12px;
+  font-weight: 600;
+  color: $muted;
+  background: $bg;
+  border-radius: $radius-pill;
+  padding: 2px 8px;
+}
+
+.bottomGap {
+  height: $sp-8;
+}

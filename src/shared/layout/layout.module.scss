@@ -3,14 +3,12 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
+  // min-height вместо height: фиксированная высота ломала sticky-header
+  min-height: 100vh;
 }
 
 .content {
-  @media (max-width: $tablet) {
-    margin-top: 68px;
-  }
+  flex-grow: 1;
 }
 
 .musicControl {

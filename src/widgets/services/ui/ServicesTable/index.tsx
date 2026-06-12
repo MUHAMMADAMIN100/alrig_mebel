@@ -78,8 +78,8 @@ export const ServicesTable = ({ services }: Props) => {
                 component={Link}
                 onClick={(event) => {
                   event.preventDefault();
-                  (window as any).openSabtModal &&
-                    (window as any).openSabtModal();
+                  const win = window as Window & { openSabtModal?: () => void };
+                  win.openSabtModal?.();
                 }}
               >
                 Записаться

@@ -7,8 +7,8 @@ export const navDate: INav[] = [
         link: '/products',
     },
     {
-        id: 5,
+        id: 2,
         name: 'Контакты',
-        link: 'contacts',
-    }
+        link: '/#contacts',
+    },
 ]

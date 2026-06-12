@@ -40,7 +40,7 @@ const Input = forwardRef(({
   useEffect(() => {
     const input = document.getElementById(id) as HTMLInputElement
     setFocus(input && input.value !== '')
-  }, [])
+  }, [id])
 
   return (
     <div

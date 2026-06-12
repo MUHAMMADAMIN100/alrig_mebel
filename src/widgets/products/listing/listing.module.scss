@@ -1,0 +1,85 @@
+@import 'src/styles/variables';
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $sp-4;
+  margin-bottom: $sp-5;
+}
+
+.count {
+  margin: 0;
+  font-size: 14px;
+  color: $muted;
+
+  b {
+    color: $ink;
+  }
+}
+
+.sort {
+  appearance: none;
+  padding: 10px 36px 10px 14px;
+  font-size: 14px;
+  color: $text;
+  background: $surface url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%23797D85' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center;
+  border: 1px solid $line;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: border-color $t-fast;
+
+  &:hover,
+  &:focus {
+    border-color: $accent;
+    outline: none;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $sp-5;
+
+  @media (max-width: $desktopSmall) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $sp-4;
+  }
+
+  @media (max-width: $tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skeletonCard {
+  height: 360px;
+  border-radius: $radius-lg;
+  background: linear-gradient(90deg, $bg 25%, $line 50%, $bg 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.state {
+  padding: $sp-8 $sp-4;
+  text-align: center;
+  color: $muted;
+  background: $surface;
+  border-radius: $radius-lg;
+  border: 1px dashed $line;
+}
+
+.stateTitle {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 600;
+  color: $ink;
+}

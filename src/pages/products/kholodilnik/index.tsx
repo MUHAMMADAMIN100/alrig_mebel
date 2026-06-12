@@ -1,7 +1,0 @@
-import { CategoryPage } from '../../../widgets/products/category-page';
-import { getCategoryBySlug } from '../../../data/products';
-
-export const KholodilnikPage = () => {
-  const category = getCategoryBySlug('kholodilnik')!;
-  return <CategoryPage category={category} />;
-};

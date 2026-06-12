@@ -8,11 +8,18 @@ import classes from "./layout.module.scss";
 const Layout = () => {
   const location = useLocation();
 
-  // Скролл к верху при переходе по страницам
-  
+  // Скролл при навигации: якорь (#contacts) — плавно к секции, иначе — к верху
   useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      // ждём отрисовку страницы (данные/анимации), затем скроллим
+      const timer = setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 120);
+      return () => clearTimeout(timer);
+    }
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   return (
     <div className={classes.main}>

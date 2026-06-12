@@ -1,149 +1,242 @@
-@import '../../styles/variables';
-@import '../../styles/colors';
+@import 'src/styles/variables';
 
-.carouselWrap {
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: $sp-6;
   margin-top: 30px;
-  margin-bottom: 60px;
-  border-radius: 20px;
+  margin-bottom: $sp-7;
+  padding: $sp-7 $sp-7;
+  background: radial-gradient(120% 160% at 0% 0%, #1b1c20 0%, #101113 55%, #16080b 100%);
+  border-radius: 28px;
   overflow: hidden;
 
-  @media (max-width: $tablet) {
-    margin-top: 90px;
-    margin-bottom: 40px;
-    border-radius: 14px;
+  @media (max-width: $desktopSmall) {
+    padding: $sp-6 $sp-5;
+    gap: $sp-4;
   }
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    margin-top: $sp-5;
+    padding: $sp-6 $sp-5;
+  }
+}
+
+.heroGlow {
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(200, 16, 46, 0.35) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.label {
+  margin: 0 0 12px;
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffb3bf;
+  background: rgba(200, 16, 46, 0.18);
+  border: 1px solid rgba(200, 16, 46, 0.35);
+  border-radius: $radius-pill;
+}
+
+.title {
+  margin: 0;
+  font-size: 46px;
+  line-height: 54px;
+  font-weight: 800;
+  color: $white;
+  letter-spacing: -0.01em;
+
+  @media (max-width: $desktopSmall) {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  @media (max-width: $mobileLarge) {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
+.subtitle {
+  margin: 16px 0 0;
+  max-width: 480px;
+  font-size: 16px;
+  line-height: 25px;
+  color: rgba(255, 255, 255, 0.72);
+
+  @media (max-width: $mobileLarge) {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: $sp-5;
+
+  @media (max-width: $mobileLarge) {
+    flex-direction: column;
+  }
+}
+
+.primaryBtn {
+  padding: 15px 30px;
+  font-size: 15px;
+  font-weight: 700;
+  color: $white;
+  background: $accent-gradient;
+  border-radius: $radius-md;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: $shadow-accent;
+  transition: transform $t-fast, filter $t-fast;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+  }
+}
+
+.secondaryBtn {
+  padding: 15px 30px;
+  font-size: 15px;
+  font-weight: 700;
+  color: $white;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: $radius-md;
+  text-decoration: none;
+  text-align: center;
+  transition: background $t-fast, border-color $t-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: $sp-5;
+  margin-top: $sp-6;
+
+  @media (max-width: $mobileLarge) {
+    gap: $sp-4;
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+
+  b {
+    font-size: 20px;
+    font-weight: 800;
+    color: $white;
+  }
+
+  span {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+  }
+}
+
+.statDivider {
+  width: 1px;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+// ── Слайдер featured-товаров ──
+
+.slider {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
 }
 
 .swiper {
   width: 100%;
-  border-radius: 20px;
-
-  :global(.swiper-button-next),
-  :global(.swiper-button-prev) {
-    color: $white;
-    background: rgba(0, 0, 0, 0.35);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    &::after {
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    @media (max-width: $tablet) {
-      display: none;
-    }
-  }
+  border-radius: $radius-lg;
 
   :global(.swiper-pagination-bullet) {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.45);
     opacity: 1;
   }
 
   :global(.swiper-pagination-bullet-active) {
-    background: $white;
+    background: $accent;
   }
 }
 
 .slide {
-  position: relative;
-  width: 100%;
-  height: 480px;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.985);
+  border-radius: $radius-lg;
+  padding: $sp-5 $sp-5 $sp-7;
+  transition: transform $t-med;
 
-  @media (max-width: $desktopSmall) {
-    height: 400px;
-  }
-
-  @media (max-width: $tablet) {
-    height: 320px;
-  }
-
-  @media (max-width: $mobileLarge) {
-    height: 260px;
+  &:hover .slideImage {
+    transform: scale(1.04);
   }
 }
 
 .slideImage {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  transition: transform 0.5s $ease;
 
-.slideOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.72) 0%,
-    rgba(0, 0, 0, 0.2) 55%,
-    rgba(0, 0, 0, 0.0) 100%
-  );
-}
-
-.slideContent {
-  position: relative;
-  z-index: 2;
-  padding: 40px 48px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  @media (max-width: $tablet) {
-    padding: 24px 24px;
-    gap: 8px;
-  }
-}
-
-.slideLabel {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.slideTitle {
-  margin: 0;
-  font-family: 'Arsenal', sans-serif;
-  font-size: 2.6rem;
-  font-weight: 400;
-  color: $white;
-  text-transform: uppercase;
-  line-height: 1.1;
-
-  @media (max-width: $tablet) {
-    font-size: 1.8rem;
+  @media (max-width: $desktopSmall) {
+    height: 230px;
   }
 
   @media (max-width: $mobileLarge) {
-    font-size: 1.4rem;
+    height: 190px;
   }
 }
 
-.slideBtn {
-  display: inline-block;
-  margin-top: 6px;
-  padding: 10px 24px;
-  background: $white;
-  color: $primary;
-  font-size: 14px;
+.slideInfo {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.slideName {
+  margin: 0;
+  font-size: 15px;
   font-weight: 600;
-  border-radius: 8px;
-  text-decoration: none;
-  width: fit-content;
-  transition: background 0.2s, color 0.2s;
+  color: $ink;
+}
 
-  &:hover {
-    background: $brown;
-  }
-
-  @media (max-width: $tablet) {
-    font-size: 13px;
-    padding: 8px 18px;
-  }
+.slidePrice {
+  margin: 4px 0 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: $accent;
 }

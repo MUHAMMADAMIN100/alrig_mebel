@@ -1,5 +1,5 @@
 import classes from './price.module.scss'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 type PriceProps = {
   targetPrice: number;
@@ -8,11 +8,15 @@ type PriceProps = {
 
 export const AnimatedPrice: React.FC<PriceProps> = ({ targetPrice, duration }) => {
   const [price, setPrice] = useState(0);
+  // актуальная цена в ref — чтобы эффект не перезапускался на каждый кадр
+  const priceRef = useRef(price);
+  priceRef.current = price;
 
   useEffect(() => {
     const startTime = performance.now();
-    const initialPrice = price;
+    const initialPrice = priceRef.current;
     const priceDiff = targetPrice - initialPrice;
+    let rafId: number;
 
     const animate = (time: number) => {
       const timeElapsed = time - startTime;
@@ -22,18 +26,19 @@ export const AnimatedPrice: React.FC<PriceProps> = ({ targetPrice, duration }) =
       setPrice(currentPrice);
 
       if (progress < 1) {
-        requestAnimationFrame(animate);
+        rafId = requestAnimationFrame(animate);
       }
     };
 
-    requestAnimationFrame(animate);
+    rafId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId);
   }, [targetPrice, duration]);
 
   return <span className={classes.Span}>{price}с</span>;
 };
 
 export const Price = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const [selectedOptions] = useState<Record<string, number>>({});
   const total = Object.values(selectedOptions).reduce((sum, price) => sum + price, 0);
 

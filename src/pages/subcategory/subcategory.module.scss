@@ -1,0 +1,26 @@
+@import 'src/styles/variables';
+
+.header {
+  margin: $sp-6 0 $sp-5;
+
+  @media (max-width: $tablet) {
+    margin-top: $sp-5;
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 700;
+  color: $ink;
+
+  @media (max-width: $tablet) {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
+.bottomGap {
+  height: $sp-8;
+}

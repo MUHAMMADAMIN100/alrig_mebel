@@ -1,4 +1,31 @@
-// primary
+// ─── Design-system: палитра ALRIG ───
+
+// Акцент (фирменный красный ALRIG)
+$accent: #C8102E;
+$accent-hover: #A50D26;
+$accent-soft: #FBEAEC;
+$accent-gradient: linear-gradient(135deg, #C8102E 0%, #8E0B20 100%);
+
+// Нейтральные
+$ink: #101113;          // почти чёрный — заголовки
+$text: #3F4146;         // основной текст
+$muted: #797D85;        // вторичный текст
+$line: #E7E8EA;         // бордеры/разделители
+$surface: #ffffff;      // карточки
+$bg: #F6F6F7;           // фон страницы
+$bg-soft: #FAFAFB;
+
+// Статусы
+$success: #1B873F;
+$success-soft: #E7F5EC;
+$warning: #B25E09;
+$warning-soft: #FCF1E3;
+$danger: #C8102E;
+$danger-soft: #FBEAEC;
+$info: #155EEF;
+$info-soft: #EAF0FE;
+
+// ─── Legacy (старые виджеты) ───
 $primary: #000000;
 $brown: #F2EBE1;
 $gradient: linear-gradient(90deg, rgba(243,237,227,1) 0%, rgba(236,224,206,1) 100%);
@@ -10,4 +37,3 @@ $text_3: #a5a099;
 
 $black: #000000;
 $white: #ffffff;
-

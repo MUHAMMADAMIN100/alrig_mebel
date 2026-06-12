@@ -3,7 +3,7 @@
 type SelectItemProps = {
   id: number
   selectedItems: number[]
-  setSelectedItems: (items: number[]) => any
+  setSelectedItems: (items: number[]) => void
   close: () => void
   multiple?: boolean
 }

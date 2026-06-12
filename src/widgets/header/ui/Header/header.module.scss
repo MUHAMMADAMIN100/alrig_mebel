@@ -1,122 +1,385 @@
-@import '../../../../styles/variables';
-@import '../../../../styles/mixins';
+@import 'src/styles/variables';
 
-.main_header {
-    // position: fixed;
-    // width: 100%;
-    // z-index: 50;
-}
-.body {
-    margin: 28px 0;
-    padding: 24px 28px;
-    background-color: $white;
-    border-radius: 20px;
+// ════════ HEADER ════════
 
-    @media (max-width: $tablet) {
-        padding: 18px 20px;
-    }
-}
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    grid-gap: 24px;
-    width: 100%;
-
-    @media (max-width: $desktop) {
-        width: 100%;
-    }
-}
-.bl_logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.logo {
-    @media (max-width: $tablet) {
-        width: 80px;
-        height: 45px;
-    }
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 14px 0;
+  background: rgba(246, 246, 247, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: padding $t-med;
 }
 
-.items {
-    display: flex;
-    grid-gap: 20px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.link {
-    text-decoration: none;
-    color: $black;
-    padding: 10px 16px;
-    border-radius: 50px;
-    transition: all .2s;
-    &:hover {
-        // color: darken($primary, 7%);
-        outline: 1px solid $primary;
-        background-color: rgba(175, 1, 1, 0.1);
-        color: $primary;
-    }
-}
-.nav{
-    display: block;
+.scrolled {
+  padding: 8px 0;
 
-    @media (max-width: $desktopSmall) {
-        display: none;
-    }
+  .bar {
+    box-shadow: $shadow-md;
+  }
 }
 
-.body {
-    display: flex;
-    justify-content: space-between;
-    grid-gap: 20px;
-
-    @media (max-width: $desktopSmall) {
-        grid-gap: 0;
-    }
-}
-
-.button {
-    display: block !important; 
-    @media (max-width: $desktopSmall) {
-        display: none !important;
-    }
-}
-.main_header {
+.bar {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $sp-5;
+  padding: 10px 22px;
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  transition: box-shadow $t-med;
+}
 
-  @media (max-width: $tablet) {
-    position: fixed;
-    top: 0;
-    left: 0;
+// ── Лого ──
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo {
+  display: block;
+  height: 56px;
+  width: auto;
+  transition: transform $t-fast;
+
+  .logoLink:hover & {
+    transform: scale(1.04);
+  }
+
+  @media (max-width: $mobileLarge) {
+    height: 44px;
+  }
+}
+
+// ── Навигация ──
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  @media (max-width: $desktopSmall) {
+    display: none;
+  }
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  color: $ink;
+  background: none;
+  border: none;
+  border-radius: $radius-pill;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background $t-fast, color $t-fast;
+
+  &:hover {
+    background: $accent-soft;
+    color: $accent;
+  }
+}
+
+.navLinkActive {
+  background: $accent-soft;
+  color: $accent;
+}
+
+.chevron {
+  transition: transform $t-fast;
+}
+
+.chevronUp {
+  transform: rotate(180deg);
+}
+
+// ── Мега-меню ──
+
+.megaMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  padding: $sp-5 $sp-6;
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+}
+
+.megaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $sp-5;
+}
+
+.megaCol {
+  min-width: 0;
+}
+
+.megaTitle {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $ink;
+  text-decoration: none;
+  transition: color $t-fast;
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+.megaList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.megaLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 10px;
+  margin-left: -10px;
+  font-size: 14px;
+  color: $text;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background $t-fast, color $t-fast;
+
+  &:hover {
+    background: $bg-soft;
+    color: $accent;
+  }
+}
+
+.megaCount {
+  font-size: 11px;
+  font-weight: 600;
+  color: $muted;
+  background: $bg;
+  border-radius: $radius-pill;
+  padding: 2px 7px;
+}
+
+.megaAll {
+  display: inline-block;
+  margin-top: $sp-4;
+  font-size: 14px;
+  font-weight: 700;
+  color: $accent;
+  text-decoration: none;
+  transition: opacity $t-fast;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+// ── Правый блок ──
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.phone {
+  font-size: 15px;
+  font-weight: 700;
+  color: $ink;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color $t-fast;
+
+  &:hover {
+    color: $accent;
+  }
+
+  @media (max-width: $desktop) {
+    display: none;
+  }
+}
+
+.cta {
+  padding: 11px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  color: $white;
+  background: $accent-gradient;
+  border-radius: $radius-pill;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(200, 16, 46, 0.25);
+  transition: transform $t-fast, filter $t-fast;
+
+  &:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.07);
+  }
+
+  @media (max-width: $desktopSmall) {
+    display: none;
+  }
+}
+
+// ── Бургер ──
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  background: $bg-soft;
+  border: 1px solid $line;
+  border-radius: $radius-sm;
+  cursor: pointer;
+
+  span {
+    display: block;
+    height: 2px;
     width: 100%;
-    z-index: 1000;
+    background: $ink;
+    border-radius: 2px;
+    transition: transform $t-med, opacity $t-fast;
+    transform-origin: center;
+  }
 
-    // полупрозрачный фон + размытие
-    background: rgba(255, 255, 255, 0.2); 
-    backdrop-filter: blur(12px);
-
-    // на случай Safari
-    -webkit-backdrop-filter: blur(12px);
+  @media (max-width: $desktopSmall) {
+    display: flex;
   }
 }
 
-.body {
-  margin: 28px 0;
-  padding: 24px 28px;
-  background-color: $white;
-  border-radius: 20px;
+.burgerOpen {
+  span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
 
-  @media (max-width: $tablet) {
-    margin: 0;
-    padding: 12px 0px;
+  span:nth-child(2) {
+    opacity: 0;
+  }
 
-    background: transparent; // убираем белый фон у body
-    border-radius: 0;
+  span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 }
 
-.link_small {
-    text-decoration: none;
+// ── Мобильное меню ──
+
+.mobileBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  background: rgba(16, 17, 19, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 78px;
+  left: 14px;
+  right: 14px;
+  z-index: 999;
+  max-height: calc(100dvh - 96px);
+  overflow-y: auto;
+  padding: $sp-5;
+  background: $surface;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileLink {
+  padding: 13px 4px;
+  font-size: 18px;
+  font-weight: 700;
+  color: $ink;
+  text-decoration: none;
+  border-bottom: 1px solid $line;
+}
+
+.mobileCats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 0 16px;
+  border-bottom: 1px solid $line;
+}
+
+.mobileCat {
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: $text;
+  background: $bg-soft;
+  border: 1px solid $line;
+  border-radius: $radius-pill;
+  text-decoration: none;
+  transition: border-color $t-fast, color $t-fast;
+
+  &:active {
+    border-color: $accent;
+    color: $accent;
+  }
+}
+
+.mobileFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: $sp-4;
+}
+
+.mobilePhone {
+  font-size: 19px;
+  font-weight: 800;
+  color: $ink;
+  text-decoration: none;
+}
+
+.mobileHours {
+  margin: 0;
+  font-size: 13px;
+  color: $muted;
+}
+
+.mobileCta {
+  margin-top: 10px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  color: $white;
+  background: $accent-gradient;
+  border-radius: $radius-md;
+  text-decoration: none;
+  box-shadow: $shadow-accent;
 }

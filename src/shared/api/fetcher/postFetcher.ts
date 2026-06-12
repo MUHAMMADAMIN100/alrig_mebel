@@ -5,7 +5,7 @@ import { axiosInstance } from '../axiosInstance'
 //   phone: string
 //   rooms: string
 // }
-export async function postFetcher(url: string, data: any) {
+export async function postFetcher(url: string, data: unknown) {
   try {
     // const formData = new FormData(
     // for (const key in data) {

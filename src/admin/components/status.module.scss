@@ -1,0 +1,156 @@
+@import 'src/styles/variables';
+
+// ════════ Бейдж статуса (мягкий фон + насыщенный текст + точка) ════════
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: $radius-pill;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+// ── Тоны бейджа: мягкий фон + насыщенный цвет (из design-system) ──
+.blue {
+  background: $info-soft;
+  color: $info;
+}
+
+.amber {
+  background: $warning-soft;
+  color: $warning;
+}
+
+.green {
+  background: $success-soft;
+  color: $success;
+}
+
+.red {
+  background: $danger-soft;
+  color: $danger;
+}
+
+// ════════ Кнопка-селект (бейдж + стрелка) ════════
+
+.trigger {
+  composes: badge;
+  padding-right: 8px;
+  border: none;
+  cursor: pointer;
+  transition: filter $t-fast;
+
+  &:hover:not(:disabled) {
+    filter: brightness(0.96);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+}
+
+.chevron {
+  opacity: 0.75;
+  transition: transform $t-fast;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+// ════════ Выпадающее меню (рендерится в портале, position: fixed) ════════
+
+.menu {
+  position: fixed;
+  z-index: 1200;
+  min-width: 184px;
+  padding: 6px;
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-md;
+  box-shadow: $shadow-lg;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 9px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: $text;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: background $t-fast, color $t-fast;
+
+  &:hover {
+    background: $bg-soft;
+  }
+}
+
+.optionDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.check {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+// ── Цвет точки пункта = тон статуса ──
+.dotBlue {
+  background: $info;
+}
+
+.dotAmber {
+  background: $warning;
+}
+
+.dotGreen {
+  background: $success;
+}
+
+.dotRed {
+  background: $danger;
+}
+
+// ── Активный пункт подсвечен в цвет статуса (без системной синей заливки) ──
+.activeBlue {
+  background: $info-soft;
+  color: $info;
+}
+
+.activeAmber {
+  background: $warning-soft;
+  color: $warning;
+}
+
+.activeGreen {
+  background: $success-soft;
+  color: $success;
+}
+
+.activeRed {
+  background: $danger-soft;
+  color: $danger;
+}

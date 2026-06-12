@@ -1,0 +1,970 @@
+@import 'src/styles/variables';
+
+// ════════════════ ADMIN DESIGN SYSTEM ════════════════
+
+// ── Каркас ──
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: $bg;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 248px;
+  flex-shrink: 0;
+  height: 100vh;
+  padding: 20px 14px;
+  box-sizing: border-box;
+  background: #121317;
+  color: $white;
+
+  @media (max-width: $tablet) {
+    width: 70px;
+    padding: 16px 8px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px 20px;
+  text-decoration: none;
+
+  @media (max-width: $tablet) {
+    justify-content: center;
+    padding: 6px 4px 20px;
+  }
+}
+
+.logoImg {
+  display: block;
+  height: 38px;
+  width: auto;
+  flex-shrink: 0;
+
+  @media (max-width: $tablet) {
+    height: auto;
+    width: 100%;
+    max-width: 46px;
+  }
+}
+
+.logoText {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.66);
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background $t-fast, color $t-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: $white;
+  }
+
+  @media (max-width: $tablet) {
+    justify-content: center;
+    padding: 12px 0;
+
+    // скрываем подпись, оставляем иконку
+    font-size: 0;
+    gap: 0;
+  }
+}
+
+.navItemActive {
+  background: rgba(200, 16, 46, 0.18);
+  color: #ff8fa1;
+
+  &:hover {
+    background: rgba(200, 16, 46, 0.24);
+    color: #ffa9b8;
+  }
+}
+
+.navIcon {
+  flex-shrink: 0;
+}
+
+.sidebarFooter {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.siteLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: color $t-fast, background $t-fast;
+
+  &:hover {
+    color: $white;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  @media (max-width: $tablet) {
+    justify-content: center;
+    // прячем подпись, оставляем иконку
+    font-size: 0;
+  }
+}
+
+.userRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+
+  @media (max-width: $tablet) {
+    justify-content: center;
+    padding: 8px 4px;
+  }
+}
+
+.userAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: $white;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.userName {
+  font-size: 13px;
+  font-weight: 600;
+  color: $white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.logoutBtn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color $t-fast;
+
+  &:hover {
+    color: #ff8fa1;
+  }
+}
+
+.content {
+  flex-grow: 1;
+  min-width: 0;
+  padding: 28px 32px 48px;
+
+  @media (max-width: $tablet) {
+    padding: 20px 16px 40px;
+  }
+}
+
+// ── Общие элементы страниц ──
+
+.pageHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.pageTitle {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: $ink;
+}
+
+.pageSubtitle {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: $muted;
+}
+
+.card {
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-lg;
+  padding: 22px;
+  box-shadow: $shadow-sm;
+}
+
+// ── Кнопки ──
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: $white;
+  background: $accent-gradient;
+  border: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(200, 16, 46, 0.22);
+  transition: transform $t-fast, filter $t-fast;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    filter: brightness(1.07);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: $text;
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color $t-fast, color $t-fast;
+
+  &:hover:not(:disabled) {
+    border-color: $accent;
+    color: $accent;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+
+.btnDanger {
+  composes: btnGhost;
+
+  &:hover:not(:disabled) {
+    border-color: $danger;
+    color: $danger;
+    background: $danger-soft;
+  }
+}
+
+.btnIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  font-size: 14px;
+  color: $muted;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all $t-fast;
+
+  &:hover {
+    color: $ink;
+    background: $bg;
+  }
+}
+
+.btnIconDanger {
+  composes: btnIcon;
+
+  &:hover {
+    color: $danger;
+    background: $danger-soft;
+  }
+}
+
+// ── Формы ──
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media (max-width: $tabletSmall) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.fieldFull {
+  composes: field;
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: $text;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: $ink;
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-sm;
+  transition: border-color $t-fast, box-shadow $t-fast;
+
+  &:focus {
+    outline: none;
+    border-color: $accent;
+    box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12);
+  }
+
+  &:disabled {
+    background: $bg;
+    color: $muted;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: $muted;
+  }
+}
+
+.select {
+  appearance: none;
+  padding-right: 38px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%23797D85' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
+
+.textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.errorText {
+  font-size: 12px;
+  color: $danger;
+}
+
+// ── Тумблер ──
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  background: $bg-soft;
+  border: 1px solid $line;
+  border-radius: $radius-sm;
+}
+
+.toggleLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: $text;
+}
+
+.toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+  background: $line;
+  border: none;
+  border-radius: $radius-pill;
+  cursor: pointer;
+  transition: background $t-fast;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    background: $white;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    transition: transform $t-fast;
+  }
+}
+
+.toggleOn {
+  composes: toggle;
+  background: $accent;
+
+  &::after {
+    transform: translateX(20px);
+  }
+}
+
+// ── Таблица ──
+
+.tableWrap {
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-lg;
+  overflow-x: auto;
+  box-shadow: $shadow-sm;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+
+  th {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $muted;
+    background: $bg-soft;
+    border-bottom: 1px solid $line;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 12px 16px;
+    color: $text;
+    border-bottom: 1px solid $line;
+    vertical-align: middle;
+  }
+
+  tbody tr {
+    transition: background $t-fast;
+
+    &:hover {
+      background: $bg-soft;
+    }
+
+    &:last-child td {
+      border-bottom: none;
+    }
+  }
+}
+
+.tableImage {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  background: $bg-soft;
+  border-radius: 8px;
+  border: 1px solid $line;
+}
+
+.tableTitle {
+  font-weight: 600;
+  color: $ink;
+}
+
+.tableSub {
+  display: block;
+  font-size: 12px;
+  color: $muted;
+  margin-top: 2px;
+}
+
+.rowActions {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+// ── Бейджи статусов ──
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: $radius-pill;
+  white-space: nowrap;
+}
+
+.badgeGreen {
+  composes: badge;
+  background: $success-soft;
+  color: $success;
+}
+
+.badgeGray {
+  composes: badge;
+  background: $bg;
+  color: $muted;
+}
+
+.badgeRed {
+  composes: badge;
+  background: $danger-soft;
+  color: $danger;
+}
+
+.badgeYellow {
+  composes: badge;
+  background: $warning-soft;
+  color: $warning;
+}
+
+.badgeBlue {
+  composes: badge;
+  background: $info-soft;
+  color: $info;
+}
+
+// ── Тулбар таблиц ──
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.searchInput {
+  composes: input;
+  max-width: 280px;
+}
+
+.filterSelect {
+  composes: select;
+  width: auto;
+  min-width: 180px;
+}
+
+// ── Состояния ──
+
+.emptyState {
+  padding: 64px 24px;
+  text-align: center;
+  color: $muted;
+
+  b {
+    display: block;
+    font-size: 17px;
+    color: $ink;
+    margin-bottom: 6px;
+  }
+}
+
+.emptyIcon {
+  display: block;
+  margin: 0 auto 14px;
+  color: $muted;
+  opacity: 0.45;
+}
+
+.fullScreenCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: $bg;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid $line;
+  border-top-color: $accent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// крутящаяся иконка-загрузка внутри кнопки (lucide Loader2)
+.btnSpinner {
+  animation: spin 0.7s linear infinite;
+}
+
+.skeletonRow {
+  height: 56px;
+  border-radius: $radius-sm;
+  background: linear-gradient(90deg, $bg 25%, $line 50%, $bg 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  margin-bottom: 8px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+// ── Статистика (дашборд) ──
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+
+  @media (max-width: $desktopSmall) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $mobileLarge) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.statCard {
+  composes: card;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+  transition: transform $t-fast, box-shadow $t-fast;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-md;
+  }
+}
+
+.statValue {
+  font-size: 32px;
+  font-weight: 800;
+  color: $ink;
+  line-height: 1.1;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: $muted;
+}
+
+.statAccent {
+  color: $accent;
+}
+
+// ── Модалка/диалог ──
+
+.dialogTitle {
+  margin: 0 0 18px;
+  font-size: 20px;
+  font-weight: 700;
+  color: $ink;
+}
+
+.dialogActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.dialogText {
+  margin: 0;
+  font-size: 14px;
+  line-height: 22px;
+  color: $text;
+}
+
+// ── Пагинация (компактная для таблиц) ──
+
+.tablePagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 14px;
+  color: $muted;
+}
+
+.pageBtn {
+  composes: btnGhost;
+  padding: 8px 14px;
+}
+
+// ════════ Заявки: тулбар, чипы-фильтры, ячейки ════════
+
+.ordersToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.statusTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 15px;
+  font-size: 13px;
+  font-weight: 600;
+  color: $muted;
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-pill;
+  cursor: pointer;
+  transition: color $t-fast, border-color $t-fast, background $t-fast;
+
+  &:hover {
+    color: $ink;
+    border-color: $muted;
+  }
+}
+
+.chipActive {
+  color: $accent;
+  background: $accent-soft;
+  border-color: transparent;
+
+  &:hover {
+    color: $accent;
+    border-color: transparent;
+  }
+}
+
+// приглушённый прочерк для пустых значений
+.dash {
+  color: $muted;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.idCell {
+  color: $muted;
+  font-variant-numeric: tabular-nums;
+}
+
+.commentCell {
+  max-width: 240px;
+  color: $text;
+}
+
+// колонка с переносом названия + подзаголовка
+.cellStack {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  @media (max-width: $tablet) {
+    align-items: flex-end;
+  }
+}
+
+.productLink {
+  color: inherit;
+  text-decoration: none;
+  transition: color $t-fast;
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+.phoneCell {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.phoneLink {
+  font-weight: 500;
+  color: $ink;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color $t-fast;
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+.waLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #1faf54; // фирменный зелёный WhatsApp
+  opacity: 0.85;
+  transition: opacity $t-fast, transform $t-fast;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.waIcon {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+
+  path {
+    fill: currentColor;
+  }
+}
+
+// ════════ Адаптив: таблицы превращаются в карточки ════════
+
+@media (max-width: $tablet) {
+  .tableWrap {
+    overflow: visible;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .table {
+    display: block;
+
+    thead {
+      display: none;
+    }
+
+    tbody {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    tr {
+      display: block;
+      padding: 4px 16px;
+      background: $surface;
+      border: 1px solid $line;
+      border-radius: $radius-md;
+      box-shadow: $shadow-sm;
+    }
+
+    tbody tr:hover {
+      background: $surface;
+    }
+
+    td {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 11px 0;
+      text-align: right;
+      border-bottom: 1px solid $line;
+    }
+
+    tr td:last-child {
+      border-bottom: none;
+    }
+
+    td::before {
+      content: attr(data-label);
+      flex-shrink: 0;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: left;
+      color: $muted;
+    }
+
+    // ячейки без подписи (например, действия) — содержимое вправо, без лейбла
+    td[data-label='']::before {
+      content: none;
+    }
+
+    td[data-label=''] {
+      justify-content: flex-end;
+    }
+
+    .commentCell {
+      max-width: none;
+    }
+  }
+}

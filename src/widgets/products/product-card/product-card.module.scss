@@ -1,0 +1,185 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.cardWrap {
+  height: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: $surface;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  text-decoration: none;
+  border: 1px solid $line;
+  transition: transform $t-med, box-shadow $t-med, border-color $t-med;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-lg;
+    border-color: transparent;
+
+    .image {
+      transform: scale(1.05);
+    }
+
+    .more {
+      color: $accent;
+      transform: translateX(4px);
+    }
+  }
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: $bg-soft;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 14px;
+  box-sizing: border-box;
+  transition: transform 0.6s $ease;
+}
+
+.noImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: $muted;
+  font-size: 14px;
+}
+
+.badges {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.badgeStock,
+.badgeSale,
+.badgeHit {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: $radius-pill;
+  letter-spacing: 0.02em;
+}
+
+.badgeStock {
+  background: $success-soft;
+  color: $success;
+}
+
+.badgeSale {
+  background: $accent;
+  color: $white;
+}
+
+.badgeHit {
+  background: $warning-soft;
+  color: $warning;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 16px 18px 18px;
+}
+
+.category {
+  margin: 0 0 4px;
+  font-size: 12px;
+  color: $muted;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  color: $ink;
+  @include lineclamp(2);
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: $muted;
+  @include lineclamp(1);
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.price {
+  font-size: 19px;
+  font-weight: 700;
+  color: $ink;
+  white-space: nowrap;
+}
+
+.currency {
+  font-size: 13px;
+  font-weight: 500;
+  color: $muted;
+}
+
+.oldPrice {
+  font-size: 13px;
+  color: $muted;
+  text-decoration: line-through;
+}
+
+.more {
+  font-size: 13px;
+  font-weight: 600;
+  color: $text;
+  white-space: nowrap;
+  transition: color $t-fast, transform $t-fast;
+}
+
+@media (max-width: $mobileLarge) {
+  .body {
+    padding: 12px 14px 14px;
+  }
+
+  .title {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .more {
+    display: none;
+  }
+}

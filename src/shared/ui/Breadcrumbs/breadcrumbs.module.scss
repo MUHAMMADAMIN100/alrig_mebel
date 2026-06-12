@@ -1,0 +1,31 @@
+@import 'src/styles/variables';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 20px;
+  margin-bottom: $sp-4;
+}
+
+.sep {
+  color: $muted;
+  opacity: 0.6;
+}
+
+.link {
+  color: $muted;
+  text-decoration: none;
+  transition: color $t-fast;
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+.current {
+  color: $ink;
+  font-weight: 500;
+}

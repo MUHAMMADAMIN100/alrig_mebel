@@ -38,7 +38,7 @@ export const AboutInfo = () => {
         <motion.div className={classes.left} variants={imageReveal}>
           <div className={classes.bl_image}>
             <img
-              src="/assets/icons/alrig_logoo.png"
+              src="/assets/icons/alrig-logo.png"
               alt="Alrig — техника для кухни и дома"
             />
           </div>

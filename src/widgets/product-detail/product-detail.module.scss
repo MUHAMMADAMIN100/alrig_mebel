@@ -1,0 +1,446 @@
+@import 'src/styles/variables';
+
+.top {
+  margin-top: $sp-5;
+
+  @media (max-width: $tablet) {
+    margin-top: $sp-5;
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: $sp-7;
+  margin-bottom: $sp-7;
+
+  @media (max-width: $desktopSmall) {
+    gap: $sp-5;
+  }
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ── Галерея ──
+
+.gallery {
+  min-width: 0;
+}
+
+.mainImageWrap {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  cursor: zoom-in;
+  padding: 0;
+
+  &:hover .zoomHint {
+    opacity: 1;
+  }
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 24px;
+  box-sizing: border-box;
+  animation: fadeIn 0.35s $ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.noImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: $muted;
+}
+
+.zoomHint {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  padding: 8px 14px;
+  font-size: 13px;
+  color: $text;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: $radius-pill;
+  box-shadow: $shadow-sm;
+  opacity: 0;
+  transition: opacity $t-fast;
+}
+
+.thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.thumb,
+.thumbActive {
+  width: 76px;
+  height: 76px;
+  padding: 6px;
+  background: $surface;
+  border: 1.5px solid $line;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: border-color $t-fast, transform $t-fast;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.thumbActive {
+  border-color: $accent;
+}
+
+// ── Информация ──
+
+.info {
+  min-width: 0;
+}
+
+.categoryLabel {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $accent;
+}
+
+.title {
+  margin: 0;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+  color: $ink;
+
+  @media (max-width: $tablet) {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  font-size: 17px;
+  color: $muted;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: $sp-4;
+}
+
+.badgeStock,
+.badgeOut,
+.badgeSale {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: $radius-pill;
+}
+
+.badgeStock {
+  background: $success-soft;
+  color: $success;
+}
+
+.badgeOut {
+  background: $bg;
+  color: $muted;
+}
+
+.badgeSale {
+  background: $accent-soft;
+  color: $accent;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-top: $sp-5;
+}
+
+.price {
+  font-size: 36px;
+  font-weight: 800;
+  color: $ink;
+
+  @media (max-width: $tablet) {
+    font-size: 28px;
+  }
+}
+
+.currency {
+  font-size: 18px;
+  font-weight: 500;
+  color: $muted;
+}
+
+.oldPrice {
+  font-size: 18px;
+  color: $muted;
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: $sp-5;
+
+  @media (max-width: $mobileLarge) {
+    flex-direction: column;
+  }
+}
+
+.orderBtn {
+  flex: 1;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  color: $white;
+  background: $accent-gradient;
+  border: none;
+  border-radius: $radius-md;
+  cursor: pointer;
+  box-shadow: $shadow-accent;
+  transition: transform $t-fast, box-shadow $t-fast, filter $t-fast;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.phoneBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  color: $ink;
+  background: $surface;
+  border: 1.5px solid $line;
+  border-radius: $radius-md;
+  text-decoration: none;
+  transition: border-color $t-fast, color $t-fast;
+
+  &:hover {
+    border-color: $accent;
+    color: $accent;
+  }
+}
+
+.perks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: $sp-5;
+  padding: $sp-4 $sp-5;
+  background: $bg-soft;
+  border-radius: $radius-md;
+  border: 1px solid $line;
+}
+
+.perk {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: $text;
+}
+
+.perkIcon {
+  font-size: 16px;
+}
+
+.description {
+  margin-top: $sp-6;
+
+  p {
+    margin: 10px 0 0;
+    font-size: 15px;
+    line-height: 24px;
+    color: $text;
+  }
+}
+
+.blockTitle {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: $ink;
+}
+
+// ── Характеристики ──
+
+.specs {
+  max-width: 760px;
+  margin-bottom: $sp-8;
+}
+
+.specsTable {
+  margin-top: $sp-4;
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-lg;
+  padding: 8px $sp-5;
+}
+
+.specRow {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 12px 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $line;
+  }
+}
+
+.specLabel {
+  flex-shrink: 0;
+  font-size: 14px;
+  color: $muted;
+}
+
+.specDots {
+  flex-grow: 1;
+  border-bottom: 1px dotted $line;
+  transform: translateY(-4px);
+}
+
+.specValue {
+  flex-shrink: 0;
+  max-width: 55%;
+  font-size: 14px;
+  font-weight: 600;
+  color: $ink;
+  text-align: right;
+}
+
+// ── Зум ──
+
+.zoomModal {
+  width: min(960px, 94vw);
+}
+
+.zoomBody {
+  width: 100%;
+}
+
+.zoomSwiper {
+  width: 100%;
+
+  :global(.swiper-button-next),
+  :global(.swiper-button-prev) {
+    color: $ink;
+    background: rgba(255, 255, 255, 0.85);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+
+    &::after {
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background: $accent;
+  }
+}
+
+.zoomImage {
+  display: block;
+  width: 100%;
+  height: min(70vh, 640px);
+  object-fit: contain;
+}
+
+// ── Состояния ──
+
+.state {
+  padding: 120px 0;
+  text-align: center;
+  color: $muted;
+}
+
+.stateTitle {
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 700;
+  color: $ink;
+}
+
+.skeleton {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: $sp-7;
+  margin-top: $sp-6;
+  margin-bottom: $sp-8;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    margin-top: $sp-5;
+  }
+}
+
+.skeletonGallery {
+  aspect-ratio: 4 / 3;
+  border-radius: $radius-lg;
+  background: linear-gradient(90deg, $bg 25%, $line 50%, $bg 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+.skeletonInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skeletonLine {
+  height: 20px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, $bg 25%, $line 50%, $bg 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
