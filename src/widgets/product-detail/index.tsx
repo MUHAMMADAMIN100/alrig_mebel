@@ -9,6 +9,7 @@ import { Modal } from '../../shared/ui/Modal'
 import { useProduct } from '../../shared/api/hooks'
 import { formatPrice } from '../../shared/lib/formatPrice'
 import { OrderModal } from '../order-modal'
+import { CONTACTS } from '../../shared/const/contacts'
 import classes from './product-detail.module.scss'
 
 import 'swiper/css'
@@ -146,15 +147,15 @@ export const ProductDetail = () => {
             >
               Заказать
             </button>
-            <a href="tel:+992975205115" className={classes.phoneBtn}>
-              975 20 51 15
+            <a href={CONTACTS.phone.href} className={classes.phoneBtn}>
+              {CONTACTS.phone.label}
             </a>
           </div>
 
           <div className={classes.perks}>
             <div className={classes.perk}>
               <span className={classes.perkIcon}>💳</span>
-              <span>Рассрочка через карту Salom</span>
+              <span>Оплата: наличные / перевод</span>
             </div>
             <div className={classes.perk}>
               <span className={classes.perkIcon}>🚚</span>

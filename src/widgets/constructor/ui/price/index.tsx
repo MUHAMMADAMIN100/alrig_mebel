@@ -221,7 +221,7 @@ export const PriceConstructor = () => {
     text += `- Каркас: ${formatMoney(price.frame)} сомони\n`
     if (price.services > 0) text += `- Услуги: ${formatMoney(price.services)} сомони\n`
     text += `\n<b>Итого:</b> ${formatMoney(price.total)} сомони\n`
-    text += `\n<b>Оплата:</b> доступна рассрочка через карту Salom\n`
+    text += `\n<b>Оплата:</b> наличные / перевод\n`
 
     try {
       await fetch(
@@ -521,7 +521,7 @@ export const PriceConstructor = () => {
             <AnimatedPrice targetPrice={price.total} duration={500} />
           </div>
           <p className={classes.helperTextSmall}>
-            Доступна рассрочка через карту Salom.
+            Оплата: наличные / перевод.
           </p>
         </div>
       </div>
@@ -548,7 +548,7 @@ export const PriceConstructor = () => {
         />
         <Input
           label="Номер телефона"
-          placeholder="Например: 975 20 51 15"
+          placeholder="Например: 91 290 09 00"
           {...register('number', { required: 'Введите номер' })}
         />
         <Input
@@ -662,7 +662,7 @@ export const PriceConstructor = () => {
           </div>
 
           <p className={classes.helperTextSmall}>
-            Рассрочка через Salom доступна.
+            Оплата: наличные / перевод.
           </p>
         </div>
 

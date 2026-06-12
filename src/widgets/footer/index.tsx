@@ -34,8 +34,8 @@ export const Footer = () => {
               />
             </Link>
             <p className={classes.slogan}>
-              Бытовая техника в Душанбе: надёжно, доступно, с официальной гарантией
-              и рассрочкой через карту Salom.
+              Бытовая техника в Душанбе: надёжно, доступно,
+              с официальной гарантией.
             </p>
             {socials.length > 0 && (
               <div className={classes.socials}>
@@ -91,7 +91,16 @@ export const Footer = () => {
                 {CONTACTS.phone.label}
               </a>
               <p className={classes.contactText}>{CONTACTS.workingHours}</p>
-              <p className={classes.contactText}>{CONTACTS.address}</p>
+              {CONTACTS.address && (
+                <a
+                  href={CONTACTS.routeUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={classes.contactLink}
+                >
+                  {CONTACTS.address}
+                </a>
+              )}
             </div>
           </div>
         </div>

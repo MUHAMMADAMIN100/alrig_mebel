@@ -38,11 +38,11 @@ export const categories: Category[] = [
           '/assets/products/washing machine/Market 1.png',
           '/assets/products/washing machine/Market 1 1.png',
         ],
-        badges: ['В наличии', 'Рассрочка Salom'],
+        badges: ['В наличии'],
         specs: [
           { label: 'Загрузка', value: '6 кг' },
           { label: 'Тип загрузки', value: 'Фронтальная' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description: 'Стиральная машина с загрузкой 6 кг. Надёжная техника для семьи.',
       },
@@ -55,12 +55,12 @@ export const categories: Category[] = [
           '/assets/products/washing machine/mini-m1.jpg',
           '/assets/products/washing machine/Market 1 1.png',
         ],
-        badges: ['В наличии', 'Рассрочка Salom'],
+        badges: ['В наличии'],
         specs: [
           { label: 'Загрузка', value: '10 кг' },
           { label: 'Двигатель', value: 'BLDC Inverter' },
           { label: 'Тип загрузки', value: 'Фронтальная' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Стиральная машина 10 кг с инверторным двигателем BLDC. Тихая и экономичная.',
@@ -81,7 +81,7 @@ export const categories: Category[] = [
         subtitle: 'Серебристый цвет / 20 л',
         priceFrom: 850,
         images: ['/assets/products/microvawe/1.jpg'],
-        badges: ['В наличии', 'Гарантия 5 лет', 'Рассрочка Salom'],
+        badges: ['В наличии', 'Гарантия 5 лет'],
         specs: [
           { label: 'Модель', value: 'B20MXP07' },
           { label: 'Объём', value: '20 литров' },
@@ -90,7 +90,7 @@ export const categories: Category[] = [
           { label: 'Управление', value: 'Механическое (поворотные ручки)' },
           { label: 'Цвет', value: 'Серебристый' },
           { label: 'Гарантия', value: '5 лет' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Микроволновая печь ALRIG B20MXP07 объёмом 20 литров и мощностью 700 Вт. Идеально подходит для разогрева, размораживания и приготовления блюд. Удобное механическое управление, стильный серебристый дизайн. Гарантия производителя — 5 лет.',
@@ -104,7 +104,7 @@ export const categories: Category[] = [
           '/assets/products/microvawe/2.jpg',
           '/assets/products/microvawe/h1.jpg',
         ],
-        badges: ['В наличии', 'Гарантия 5 лет', 'Рассрочка Salom'],
+        badges: ['В наличии', 'Гарантия 5 лет'],
         specs: [
           { label: 'Модель', value: 'B20MXP07' },
           { label: 'Объём', value: '20 литров' },
@@ -113,7 +113,7 @@ export const categories: Category[] = [
           { label: 'Управление', value: 'Механическое (поворотные ручки)' },
           { label: 'Цвет', value: 'Чёрный' },
           { label: 'Гарантия', value: '5 лет' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Микроволновая печь ALRIG B20MXP07 в стильном чёрном исполнении. Объём 20 литров, мощность 700 Вт, удобное механическое управление. Гарантия 5 лет.',
@@ -137,10 +137,10 @@ export const categories: Category[] = [
           '/assets/products/kholodilnik/b1.jpg',
           '/assets/products/kholodilnik/b2.jpg',
         ],
-        badges: ['В наличии', 'Рассрочка Salom'],
+        badges: ['В наличии'],
         specs: [
           { label: 'Цвет', value: 'Белый' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description: 'Холодильник в белом цвете. Надёжный и вместительный.',
       },
@@ -163,10 +163,10 @@ export const categories: Category[] = [
           '/assets/products/dukhovka/c1.jpg',
           '/assets/products/dukhovka/c2.jpg',
         ],
-        badges: ['В наличии', 'Рассрочка Salom'],
+        badges: ['В наличии'],
         specs: [
           { label: 'Цвет', value: 'Чёрный' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Духовой шкаф в чёрном цвете. Отлично подходит для выпечки и запекания.',
@@ -180,10 +180,10 @@ export const categories: Category[] = [
           '/assets/products/dukhovka/r1.jpg',
           '/assets/products/dukhovka/r2.jpg',
         ],
-        badges: ['В наличии', 'Рассрочка Salom'],
+        badges: ['В наличии'],
         specs: [
           { label: 'Цвет', value: 'Коричневый' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description: 'Духовой шкаф в коричневом цвете.',
       },
@@ -203,7 +203,7 @@ export const categories: Category[] = [
         subtitle: 'S.F.B 1991 / 3000 Вт',
         priceFrom: 550,
         images: ['/assets/products/utyug/4.jpg'],
-        badges: ['В наличии', 'Гарантия 5 лет', 'Рассрочка Salom'],
+        badges: ['В наличии', 'Гарантия 5 лет'],
         specs: [
           { label: 'Модель', value: 'S.F.B 1991' },
           { label: 'Мощность', value: '3000 Вт' },
@@ -215,7 +215,7 @@ export const categories: Category[] = [
           { label: 'Регулировка температуры', value: 'Плавная' },
           { label: 'Подходит для', value: 'Всех типов тканей' },
           { label: 'Гарантия', value: '5 лет' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Мощный паровой утюг ALRIG S.F.B 1991 с керамической подошвой. Большой резервуар на 350 мл, мощность 3000 Вт. Подходит для всех типов тканей. Функции: спрей, пар, паровой удар, вертикальный пар, защита от накипи Anti Calc и защита от капель Drip Stop. Гарантия 5 лет.',
@@ -236,7 +236,7 @@ export const categories: Category[] = [
         subtitle: 'S.F.B 1991 / 2 л',
         priceFrom: 450,
         images: ['/assets/products/chaynik/5.jpg'],
-        badges: ['В наличии', 'Гарантия 3 года', 'Рассрочка Salom'],
+        badges: ['В наличии', 'Гарантия 3 года'],
         specs: [
           { label: 'Модель', value: 'S.F.B 1991' },
           { label: 'Объём', value: '2 литра' },
@@ -246,7 +246,7 @@ export const categories: Category[] = [
           { label: 'Автоотключение', value: 'Да' },
           { label: 'Контроль температуры', value: 'Точный' },
           { label: 'Гарантия', value: '3 года' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Электрический чайник ALRIG S.F.B 1991 с быстрым нагревом. Корпус из нержавеющей стали SUS 304, объём 2 литра, мощность 2000 Вт. Точный контроль температуры и автоматическое отключение. Гарантия 3 года.',
@@ -276,7 +276,7 @@ export const categories: Category[] = [
           { label: 'Ручка', value: 'Удобный хват, термостойкая' },
           { label: 'Качество', value: 'Quality Assurance Guarantee' },
           { label: 'Гарантия', value: '3 года' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Термос ALRIG Vacuum Jug S.F.B 1991 объёмом 2 литра. Корпус из нержавеющей стали Inox — небьющийся и долговечный. Удобная термостойкая ручка с удобным хватом. Долго сохраняет температуру напитков. Новая модель 2026 года. Гарантия качества 3 года.',
@@ -297,7 +297,7 @@ export const categories: Category[] = [
         subtitle: 'Сенсорный дисплей / LED',
         priceFrom: 1500,
         images: ['/assets/products/vityazhka/6.jpg'],
-        badges: ['В наличии', 'Рассрочка Salom'],
+        badges: ['В наличии'],
         specs: [
           { label: 'Тип', value: 'Подвесная' },
           { label: 'Управление', value: 'Сенсорный дисплей' },
@@ -305,7 +305,7 @@ export const categories: Category[] = [
           { label: 'Фильтр', value: 'Алюминиевый, моющийся' },
           { label: 'Материал корпуса', value: 'Сталь с покрытием' },
           { label: 'Цвет', value: 'Чёрный' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Кухонная вытяжка ALRIG с современным сенсорным дисплеем и яркой LED-подсветкой (2 лампы). Чёрный корпус, алюминиевые моющиеся фильтры. Эффективно очищает воздух на кухне.',
@@ -316,14 +316,14 @@ export const categories: Category[] = [
         subtitle: 'Классическая чёрная',
         priceFrom: 1200,
         images: ['/assets/products/varochnaya/11.jpg'],
-        badges: ['В наличии', 'Рассрочка Salom'],
+        badges: ['В наличии'],
         specs: [
           { label: 'Тип', value: 'Подвесная' },
           { label: 'Управление', value: 'Кнопочное' },
           { label: 'Подсветка', value: 'LED, 2 лампы' },
           { label: 'Фильтр', value: 'Алюминиевый, моющийся' },
           { label: 'Цвет', value: 'Чёрный' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Кухонная вытяжка ALRIG в классическом чёрном исполнении. Простое кнопочное управление, LED-подсветка, моющиеся алюминиевые фильтры. Базовая модель с надёжной работой.',
@@ -334,14 +334,14 @@ export const categories: Category[] = [
         subtitle: 'Со стеклянным экраном',
         priceFrom: 1800,
         images: ['/assets/products/varochnaya/15.jpg'],
-        badges: ['В наличии', 'Рассрочка Salom'],
+        badges: ['В наличии'],
         specs: [
           { label: 'Тип', value: 'Наклонная со стеклом' },
           { label: 'Управление', value: 'Сенсорное' },
           { label: 'Подсветка', value: 'LED' },
           { label: 'Фильтр', value: 'Алюминиевый, моющийся' },
           { label: 'Цвет', value: 'Чёрный со стеклом' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Стильная наклонная вытяжка ALRIG со стеклянным экраном. Современный дизайн идеально подходит для просторных кухонь. Сенсорное управление и LED-подсветка.',
@@ -352,14 +352,14 @@ export const categories: Category[] = [
         subtitle: 'Телескопическая',
         priceFrom: 3000,
         images: ['/assets/products/vityazhka/7.jpg'],
-        badges: ['В наличии', 'Рассрочка Salom'],
+        badges: ['В наличии'],
         specs: [
           { label: 'Тип', value: 'Встраиваемая (телескопическая)' },
           { label: 'Управление', value: 'Сенсорное' },
           { label: 'Цвет', value: 'Чёрный' },
           { label: 'Установка', value: 'В кухонный шкаф' },
           { label: 'Подсветка', value: 'LED' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Встраиваемая телескопическая вытяжка ALRIG для скрытой установки в кухонный шкаф. Современное сенсорное управление, чёрный корпус. Отличное решение для аккуратного дизайна кухни.',
@@ -370,14 +370,14 @@ export const categories: Category[] = [
         subtitle: 'С прозрачным фильтром',
         priceFrom: 1600,
         images: ['/assets/products/varochnaya/12.jpg'],
-        badges: ['В наличии', 'Рассрочка Salom'],
+        badges: ['В наличии'],
         specs: [
           { label: 'Бренд', value: 'Gorenj' },
           { label: 'Тип', value: 'Подвесная' },
           { label: 'Управление', value: 'Сенсорное' },
           { label: 'Фильтр', value: 'Прозрачный, моющийся' },
           { label: 'Цвет', value: 'Чёрный' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Вытяжка Gorenj с прозрачным моющимся фильтром и сенсорным управлением. Современный дизайн.',
@@ -398,7 +398,7 @@ export const categories: Category[] = [
         subtitle: '4 газовые конфорки / стекло',
         priceFrom: 3800,
         images: ['/assets/products/vityazhka/10.jpg'],
-        badges: ['В наличии', 'Рассрочка Salom'],
+        badges: ['В наличии'],
         specs: [
           { label: 'Тип', value: 'Газовая' },
           { label: 'Конфорки', value: '4 газовые' },
@@ -406,7 +406,7 @@ export const categories: Category[] = [
           { label: 'Управление', value: 'Поворотные ручки' },
           { label: 'Цвет', value: 'Чёрный' },
           { label: 'Установка', value: 'Встраиваемая' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Газовая варочная панель ALRIG с 4 газовыми конфорками на стеклянной поверхности. Стильный чёрный дизайн, удобные поворотные ручки управления. Встраиваемая модель.',
@@ -417,7 +417,7 @@ export const categories: Category[] = [
         subtitle: '2 газа + 2 электро / стекло',
         priceFrom: 3500,
         images: ['/assets/products/varochnaya/13.jpg'],
-        badges: ['В наличии', 'Рассрочка Salom'],
+        badges: ['В наличии'],
         specs: [
           { label: 'Тип', value: 'Комбинированная (газ + электро)' },
           { label: 'Конфорки', value: '2 газовые + 2 электрические' },
@@ -425,7 +425,7 @@ export const categories: Category[] = [
           { label: 'Управление', value: 'Поворотные ручки' },
           { label: 'Цвет', value: 'Чёрный' },
           { label: 'Установка', value: 'Встраиваемая' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Комбинированная варочная панель ALRIG со стеклянной поверхностью: 2 газовые и 2 электрические конфорки. Универсальное решение для любой кухни.',
@@ -436,14 +436,14 @@ export const categories: Category[] = [
         subtitle: '2 газа + 2 электро / нержавейка',
         priceFrom: 3200,
         images: ['/assets/products/varochnaya/9.jpg'],
-        badges: ['В наличии', 'Рассрочка Salom'],
+        badges: ['В наличии'],
         specs: [
           { label: 'Тип', value: 'Комбинированная (газ + электро)' },
           { label: 'Конфорки', value: '2 газовые + 2 электрические' },
           { label: 'Поверхность', value: 'Нержавеющая сталь' },
           { label: 'Управление', value: 'Поворотные ручки' },
           { label: 'Установка', value: 'Встраиваемая' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Прочная комбинированная варочная панель ALRIG из нержавеющей стали. 2 газовые и 2 электрические конфорки. Долговечная и надёжная.',
@@ -457,7 +457,7 @@ export const categories: Category[] = [
           '/assets/products/vityazhka/14.jpg',
           '/assets/products/vityazhka/8.jpg',
         ],
-        badges: ['В наличии', 'Рассрочка Salom'],
+        badges: ['В наличии'],
         specs: [
           { label: 'Тип', value: 'Электрическая стеклокерамика' },
           { label: 'Зоны нагрева', value: '4' },
@@ -465,7 +465,7 @@ export const categories: Category[] = [
           { label: 'Управление', value: 'Сенсорное' },
           { label: 'Цвет', value: 'Чёрный' },
           { label: 'Установка', value: 'Встраиваемая' },
-          { label: 'Оплата', value: 'Наличные / перевод / рассрочка Salom' },
+          { label: 'Оплата', value: 'Наличные / перевод' },
         ],
         description:
           'Современная стеклокерамическая варочная панель ALRIG с 4 зонами нагрева и сенсорным управлением. Лёгкая в чистке, стильный внешний вид.',

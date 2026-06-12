@@ -38,7 +38,7 @@ async function run() {
   check('Секция #contacts существует', await contactsSection.count() === 1)
   await contactsSection.scrollIntoViewIfNeeded()
   await page.waitForTimeout(1500) // карта
-  check('Телефон ALRIG в секции', await page.locator('#contacts >> text=975 20 51 15').first().isVisible())
+  check('Телефон ALRIG в секции', await page.locator('#contacts >> text=91 290 09 00').first().isVisible())
   check('Режим работы', await page.locator('#contacts >> text=Пн–Сб').first().isVisible())
   check('CTA «Связаться»', await page.locator('#contacts >> text=Связаться').first().isVisible())
   const hasMap = await page.locator('#contacts canvas, #contacts ymaps, #contacts [class*="ymaps"]').count()
@@ -85,7 +85,7 @@ async function run() {
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
   await page.waitForTimeout(600)
   check('Footer: колонка Каталог из API', await page.locator('footer >> text=Стиральные машины').isVisible())
-  check('Footer: телефон', await page.locator('footer >> text=975 20 51 15').first().isVisible())
+  check('Footer: телефон', await page.locator('footer >> text=91 290 09 00').first().isVisible())
   check('Footer: копирайт © ALRIG', (await page.locator('footer').textContent())?.includes('© ALRIG,') ?? false)
   await shot(page, '20-footer')
 

@@ -29,7 +29,7 @@ export const PaymentInfo = () => {
       >
         {/* Заголовок */}
         <motion.div variants={fadeUp}>
-          <Title className={classes.title} title="Оплата и рассрочка" />
+          <Title className={classes.title} title="Оплата" />
         </motion.div>
 
         {/* Описание */}
@@ -40,14 +40,6 @@ export const PaymentInfo = () => {
 
         {/* Список вариантов оплаты */}
         <motion.div className={classes.list} variants={listStagger}>
-          <motion.div className={classes.item} variants={itemSoft}>
-            <div className={classes.icon} />
-            <p className={classes.text}>
-              <strong>Рассрочка через карту Salom.&nbsp;</strong>
-              Оформление быстро, оплата частями.
-            </p>
-          </motion.div>
-
           <motion.div className={classes.item} variants={itemSoft}>
             <div className={classes.icon} />
             <p className={classes.text}>
@@ -74,7 +66,7 @@ export const PaymentInfo = () => {
         </motion.div>
 
         <motion.p className={classes.note} variants={fadeUp}>
-          Не знаете, что выбрать? Напишите нам — подскажем самый удобный вариант и поможем оформить рассрочку.
+          Не знаете, что выбрать? Напишите нам — подскажем самый удобный вариант оплаты.
         </motion.p>
       </motion.div>
     </Wrapper>

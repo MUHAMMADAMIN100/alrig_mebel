@@ -5,6 +5,7 @@ import { Modal } from '../../shared/ui/Modal'
 import { Input } from '../../shared/ui/Input'
 import { Button } from '../../shared/ui/Button'
 import { createOrder, CreateOrderPayload } from '../../shared/api/catalog'
+import { CONTACTS } from '../../shared/const/contacts'
 import classes from './order-modal.module.scss'
 
 interface FormValues {
@@ -96,8 +97,14 @@ export const OrderModal = ({ isOpen, close, productId, productName }: Props) => 
         </form>
 
         <p className={classes.phoneHint}>
-          Или позвоните нам: <a href="tel:+992975205115">975 20 51 15</a>
+          Или позвоните нам: <a href={CONTACTS.phone.href}>{CONTACTS.phone.label}</a>
         </p>
+        {CONTACTS.address && (
+          <p className={classes.addressHint}>
+            Адрес:{' '}
+            <a href={CONTACTS.routeUrl} target="_blank" rel="noreferrer">{CONTACTS.address}</a>
+          </p>
+        )}
       </div>
     </Modal>
   )

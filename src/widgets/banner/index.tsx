@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules'
 import { Wrapper } from '../../shared/ui/Wrapper'
+import { CONTACTS } from '../../shared/const/contacts'
 import { useProducts } from '../../shared/api/hooks'
 import { formatPrice } from '../../shared/lib/formatPrice'
 import classes from './banner.module.scss'
@@ -49,7 +50,7 @@ export const Banner = () => {
             transition={{ delay: 0.35, duration: 0.45 }}
           >
             Холодильники, стиральные машины, вытяжки и варочные панели.
-            Рассрочка через карту Salom, гарантия до 5 лет, доставка по Душанбе.
+            Гарантия до 5 лет, доставка по Душанбе.
           </motion.p>
           <motion.div
             className={classes.actions}
@@ -60,8 +61,8 @@ export const Banner = () => {
             <Link to="/products" className={classes.primaryBtn}>
               Смотреть каталог
             </Link>
-            <a href="tel:+992975205115" className={classes.secondaryBtn}>
-              975 20 51 15
+            <a href={CONTACTS.phone.href} className={classes.secondaryBtn}>
+              {CONTACTS.phone.label}
             </a>
           </motion.div>
           <motion.div
@@ -73,11 +74,6 @@ export const Banner = () => {
             <div className={classes.stat}>
               <b>5 лет</b>
               <span>гарантия</span>
-            </div>
-            <div className={classes.statDivider} />
-            <div className={classes.stat}>
-              <b>0%</b>
-              <span>рассрочка Salom</span>
             </div>
             <div className={classes.statDivider} />
             <div className={classes.stat}>

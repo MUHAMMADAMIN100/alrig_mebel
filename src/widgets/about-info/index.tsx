@@ -73,7 +73,7 @@ export const AboutInfo = () => {
               <motion.div className={classes.item} variants={itemSoft}>
                 <div className={classes.number}>3</div>
                 <p className={classes.text_item}>
-                  <strong>Оплата и доставка</strong> → наличные/перевод или <strong>рассрочка через карту Salom</strong>.
+                  <strong>Оплата и доставка</strong> → наличными или переводом.
                   Доставим по Душанбе в удобное время.
                 </p>
               </motion.div>

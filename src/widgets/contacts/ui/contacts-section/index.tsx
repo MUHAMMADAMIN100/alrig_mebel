@@ -33,8 +33,8 @@ export const ContactsSection = () => {
             <p className={classes.label}>Свяжитесь с нами</p>
             <h2 className={classes.title}>Контакты</h2>
             <p className={classes.subtitle}>
-              Позвоните или напишите — поможем выбрать технику, рассчитаем
-              рассрочку и организуем доставку по Душанбе.
+              Позвоните или напишите — поможем выбрать технику
+              и организуем доставку по Душанбе.
             </p>
 
             <div className={classes.rows}>
@@ -56,13 +56,20 @@ export const ContactsSection = () => {
                 </span>
               </div>
 
-              <div className={classes.row}>
-                <span className={classes.rowIcon}>📍</span>
-                <span>
-                  <span className={classes.rowCaption}>Адрес</span>
-                  <span className={classes.rowValue}>{CONTACTS.address}</span>
-                </span>
-              </div>
+              {CONTACTS.address && (
+                <a
+                  href={CONTACTS.routeUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={classes.phoneRow}
+                >
+                  <span className={classes.rowIcon}>📍</span>
+                  <span>
+                    <span className={classes.rowCaption}>Адрес</span>
+                    <span className={classes.rowValue}>{CONTACTS.address}</span>
+                  </span>
+                </a>
+              )}
             </div>
 
             {socials.length > 0 && (
@@ -98,7 +105,17 @@ export const ContactsSection = () => {
 
           {/* ── Карта ── */}
           <div className={classes.mapWrap}>
-            <MapComponent />
+            <div className={classes.mapInner}>
+              <MapComponent />
+            </div>
+            <a
+              href={CONTACTS.routeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={classes.routeBtn}
+            >
+              Построить маршрут →
+            </a>
           </div>
         </motion.div>
       </Wrapper>

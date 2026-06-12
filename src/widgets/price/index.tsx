@@ -30,7 +30,7 @@ export const Price = () => {
               </div>
 
               <p className={classes.note}>
-                Доступна рассрочка через карту Salom и доставка по Душанбе.
+                Доставка по Душанбе.
               </p>
 
               <div className={classes.button_body}>

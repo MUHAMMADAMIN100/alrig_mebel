@@ -13,26 +13,25 @@ export interface SocialLink {
 export const CONTACTS = {
   /** Основной телефон (отображение и tel:-ссылка) */
   phone: {
-    label: '+992 975 20 51 15',
-    href: 'tel:+992975205115',
+    label: '+992 91 290 09 00',
+    href: 'tel:+992912900900',
   },
 
   workingHours: 'Пн–Сб: 9:00 – 18:00',
 
-  // TODO: вписать точный адрес магазина ALRIG
-  address: 'г. Душанбе',
+  address: 'проспект Негмата Карабаева, 54/1, Душанбе',
 
-  /** Центр карты и метка (Душанбе) */
-  mapCenter: [38.586216, 68.787027] as [number, number],
+  /** Центр карты и метка (магазин ALRIG) */
+  mapCenter: [38.538432, 68.762671] as [number, number],
   mapZoom: 16,
+  /** «Построить маршрут» — Яндекс.Карты */
+  routeUrl: 'https://yandex.com/maps/?rtext=~38.538432,68.762671',
 
   socials: {
-    // TODO: вписать реальный Instagram ALRIG (пока скрыт в UI)
-    instagram: { label: 'Instagram', href: '' } as SocialLink,
-    // TODO: вписать реальный Telegram ALRIG (пока скрыт в UI)
+    instagram: { label: 'Instagram', href: 'https://instagram.com/olami_tekhnika.tj' } as SocialLink,
+    // TODO: Telegram пока нет — скрыт в UI
     telegram: { label: 'Telegram', href: '' } as SocialLink,
-    // TODO: подтвердить, что WhatsApp привязан к основному номеру
-    whatsapp: { label: 'WhatsApp', href: 'https://wa.me/992975205115' } as SocialLink,
+    whatsapp: { label: 'WhatsApp', href: 'https://wa.me/992912900900' } as SocialLink,
   },
 } as const
 

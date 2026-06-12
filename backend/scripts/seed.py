@@ -65,7 +65,7 @@ SUBCATEGORIES = [
      'image': '/assets/products/termos/3.jpg', 'order': 4},
 ]
 
-PAY = {'label': 'Оплата', 'value': 'Наличные / перевод / рассрочка Salom'}
+PAY = {'label': 'Оплата', 'value': 'Наличные / перевод'}
 
 PRODUCTS = [
     # ── Стиральные машины ──
