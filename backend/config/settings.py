@@ -15,6 +15,9 @@ SECRET_KEY = config('SECRET_KEY', default='dev-insecure-key-change-me')
 DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=Csv())
 
+# За TLS-терминирующим прокси (Railway) — иначе абсолютные ссылки строятся как http://
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
